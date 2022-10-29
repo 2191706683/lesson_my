@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>代码设计之代码模式</h1>
+    //对象字面量 描述功能 表现能力
+    <script>
+        let zxx = {
+            name:'张新禧',
+            age:21,
+            hometown:'永丰',
+            // hasGirlfriend:true
+            isSingle:true,
+            //形参
+            sendFlower(o){
+                o.receiveFlower(this)
+            }
+        }
+
+        let xm = {
+            xq:50,
+            name:'小美',
+            age:18,
+            hometown:'赣州',
+            room:'201',
+            receiveFlower(o){
+                if(this.xq){
+                    console.log('万达走一波')
+                }else{
+                    console.log('洗脚水准备好......')
+                }
+            }
+        }
+
+        let xh = {
+            name:'小红',
+            room:'201',
+            hometown:'永丰',
+            //接口 当不同的对象具有相同的方法时，可以互换使用
+            receiveFlower(o){
+               
+                setTimeout(function(){
+                    xm.xq = 95
+                    xm.receiveFlower(o)
+                },1000)
+            }
+        }
+        zxx.sendFlower(xh)
+
+    </script>
+</body>
+</html>
