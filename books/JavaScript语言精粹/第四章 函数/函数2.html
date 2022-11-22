@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 递归 */
+        var hanoi = function(disc, src, aux, dst) {
+            if(disc > 0) {
+                hanoi(disc-1, src, dst, aux)
+                document.writeln('<br>' + 'Move disc ' + disc + ' from ' + src + ' to ' +dst)
+                hanoi(disc-1, aux, src, dst)
+            }
+        }
+
+        hanoi(3, 'Src', 'Aux', 'Dst')
+
+        /* 定义 walk_the_DOM函数，它从某个给定的节点开始，按HTML源码中的顺序，访问该树的每个节点。
+        它会调用一个函数，并依次传递每个节点给它。walk_the_DOM调用自身去处理，每一个子节点。 */
+        var walk_the_DOM = function walk(node, func) {
+            func(node)
+            node = node.firstChild
+            while(node) {
+                walk(node, func)
+                node = node.nextSibling
+            }
+        }
+
+       /*  定义getElementsByAttribute函数。它取得一个属性名称字符串和一个可选的匹配值。
+        它调用 walk_the_DOM，传递一个用来查找节点属性名的函数。匹配的节点会累积到一个结果数组中。 */
+        var getElementsByAttribute = function(att, value) {
+            var results = []
+
+            walk_the_DOM(document.body, function(node) {
+                var actual = node.nodeType === 1 && node.getAttribute(att)
+                if(typeof actual === 'string' &&
+                    (actual === value || typeof value !== 'string')) {
+                        results.push(node)
+                    }
+            })
+
+            return results
+        }
+
+       /*  构建一个带尾递归的函数。因为它会返回自身调用的结果，所以它是尾递归。
+        Javascript当前没有对这种形式的递归做出优化。 */
+        var factorial = function factorial(i, a) {
+            a = a || 1
+            if(i < 2) {
+                return a
+            }
+            return factorial(i-1, a*i)
+        }
+
+        document.writeln('<br>  ' + factorial(4))
+
+        /* 作用域 */
+        var foo = function() {
+            var a = 3, b = 5 
+            function bar() {
+                var b = 7, c = 11   //此时 a为3，b为5，c为11
+                console.log(a, b, c) 
+                a += b + c          //此时 a为21，b为7， c为11
+                console.log(a, b, c)
+            }
+            // 此时 a为3，b为5，而c还没有定义
+            console.log(a, b)
+            bar()
+            // 此时 a为21，b为5
+            console.log(a, b)
+        }
+        foo()
+
+        /* 闭包 */
+        var myObject = (function() {
+            var value = 0
+
+            return {
+                increment: function(inc) {
+                    value += typeof inc === 'number' ? inc : 1
+                },
+                getValue: function() {
+                    return value
+                }
+            }
+        }());
+
+        // 创建一个名为 quo 的构造函数
+        // 它构造出带有 get_status 方法和 status 私有属性的一个对象
+        var quo = (function(status) {
+            return {
+                get_status: function() {
+                    return status
+                }
+            }
+            
+        })
+        // 创建一个 quo 实例
+        var myQuo = quo('amazed')
+        document.writeln(myQuo.get_status())
+
+        var fade = function(node) {
+            var level = 1
+            var step = function() {
+                var hex = level.toString(16)
+                node.style.backGround = '#FFFF' + hex + hex
+                if(level < 15) {
+                    level += 1
+                    setTimeout(step, 100)
+                }
+            }
+            setTimeout(step, 100)
+        }
+        fade(document.body)
+
+        // 糟糕的例子
+        // 构造一个函数，用错误的方式给一个数组中的节点设置事件处理程序
+        // 当点击一个节点时，按照预期，应该弹出一个对话框显示节点的序号
+        // 但它总是会显示节点的数目s
+        var add_thie_handlers = function(nodes) {
+            var i
+            for(i=0; i<nodes.length; i++) {
+                nodes[i].onclick = function(e) {
+                    alert(i)
+                }
+            }
+        }
+
+        var add_thie_handlers = function(nodes) {
+            var helper = function(i) {
+                return function(e) {
+                    alert(i)
+                }
+            }
+            for(i=0; i<nodes.length; i++) {
+                nodes[i].onclick = helper(i)
+            }
+        }
+
+        /* 回调 */
+        /* requeset = prepare_the_request()
+        response = send_request_synchronously(request)
+        display(response)
+
+        request = prepare_the_request()
+        send_request_synchronously(request, function(response) {
+            display(response)
+        }) */
+
+        /* 模块 */
+        Function.prototype.method = function(name, func) {
+            if(!this.prototype[name]) {
+                this.prototype[name] = func
+            }
+            return this
+        }
+        String.method('deentityify', function() {
+            // 字符实体表。它映射字符实体的名字到对应的字符
+            var entity = {
+                quot: '"',
+                lt: '<',
+                gt: '>'
+            }
+            // 返回deentityify方法。
+            return function() {
+                return this.replace(/&([^&;]+)/g,
+                    function(a, b) {
+                        var r = entity[b]
+                        return typeof r === 'string' ? r : a
+                    }
+                )
+            }
+        }());
+        document.writeln('&lt;&quot;&gt;'.deentityify( ))
+
+        var serial_maker = function() {
+            var prefix = ''
+            var seq = 0
+           return {
+                set_prefix: function(p) {
+                    prefix =  String(p)   
+                },
+                set_seq: function(s) {
+                    seq = s
+                },
+                gensym: function() {
+                    return prefix + seq
+                    seq++
+                }
+           }
+        }
+
+        var seqer = serial_maker()
+        seqer.set_prefix('Q')
+        seqer.set_seq(1000)
+        var unique = seqer.gensym()
+        document.writeln(unique)
+
+        /* 级联 */
+        /* getElement('muBoxDiv')
+            .move(350, 150)
+            .width(100)
+            .height(100)
+            .color('red')
+            .border('10px outset')
+            .padding('4px')
+            .appendText("Please stand by")
+            .on('mousedown', function(m) {
+                this.startDrag(m, this.getNinth(m))
+            })
+            .on('mousemove', 'drag')
+            .on('mouseup', 'stopDrag')
+            .later(2000, function() {
+                this
+                    .color('yello')
+                    .setHTML("What hath God wraught")
+                    .slide(400, 40, 200, 200)
+            })
+            .tip('This box is resizeable') */
+
+            /* 柯里化 */
+            var add = function(a, b) {
+                return a + b
+            }
+            
+            Function.method('curry', function() {
+                var slice = Array.prototype.slice,
+                    args = slice.apply(arguments), 
+                    that = this
+                return function() {
+                    return that.apply(null, args.concat(slice.apply(arguments)))
+                }
+            })
+            var add1 = add.curry(1)
+            document.writeln(add1(6))
+
+            /* 记忆 */
+            var fibonacci = function(n) {
+                return n < 2 ? n : fibonacci(n-1) + fibonacci(n-2)
+            }
+            var fibonacci = function() {
+                var memo = [0, 1]
+                var fib = function(n) {
+                    var result = memo[n]
+                    if(typeof result !== 'number') {
+                        result = fib(n-1) + fib(n-2)
+                        memo[n] = result
+                    }
+                    return result
+                }
+                return fib
+            }()
+            for(var i=0; i<=10; i++) {
+                document.writeln('<br>' + '//' + i + ':' + fibonacci(i) )
+            }
+            var memoizer = function(memo, formula) {
+                var recur = function(n) {
+                    var result = memo[n]
+                    if(typeof result !== 'number'){
+                        result = formula(recur, n)
+                        memo[n] = result
+                    }
+                    return result
+                }
+                return recur
+            }
+            var fibonacci = memoizer([0,1], function(recur ,n) {
+                return recur(n-1) + recur(n-2)
+            })
+            var factorial = memoizer([1,1], function(recur, n) {
+                return n * recur(n-1  )
+            })
+    </script>
+</body>
+</html>
