@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!--  -->
+        <!-- 展示同学信息
+        新增 -->
+        <!-- 语义化标签 对搜索引擎更友好一些 -->
+        <table>
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>名字</th>
+                    <th>家乡</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>胡毅辉</td>
+                    <td>抚州</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>付宇</td>
+                    <td>宜春</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <form name="studentForm">
+            <!-- 盲人上网 无障碍 -->
+            <div>
+                <label for="numInput">序号</label>
+                <input type="number" placeholder="请输入序号" id="numInput" name="studnetID" required />
+            </div>
+            <div>
+                <label for="nameInput">姓名</label>
+                <input type="number" placeholder="请输入姓名" id="nameInput" name="studnetName" required />
+            </div>
+            <div>
+                <label for="hometownInput">家乡</label>
+                <input type="number" placeholder="请输入家乡" id="hometownInput" name="studnetHometown" required />
+            </div>
+            <div>
+                <button type="submit">提交</button>
+            </div>
+        </form>
+        <script>
+            // json 数组
+            // 1. 对象字面量
+
+            const students = [
+                {
+                    id: 1,
+                    name: "胡毅辉",
+                    hometown: '抚州'
+                },
+                {
+                    id: 2,
+                    name: "付宇",
+                    hometown: '宜春'
+                }
+            ]
+            // 函数 封装代码的能力
+            // 不用写流水账， 超过10行代码， 一定要封装函数
+            const oTBody = document.querySelector('tbody')  // DOM
+            function renderStudent() {
+
+                students.forEach(function(student) {
+                    // console.log(student)
+                    // es6 字符串模板   支持多行
+                    oTBody.innerHTML += `
+                        <tr>
+                            <td>${student.id}</td>
+                            <td>${student.name}</td>
+                            <td>${student.hometown}</td>
+                        </tr>
+                    `
+                }) 
+            }
+            function addStudent() {
+
+            }
+            renderStudent()
+            document.forms['studentForm'].addEventListener('submit', function(event) {
+                event.preventDefault(); // 阻止默认行为
+                const oStudent = {
+                    id: this["studentID"].value,
+                    name: this["studentName"].value,
+                    id: this["studentHometown"].value
+                }
+                // console.log(oStudent)
+                students.push
+            })
+        </script>
+    </body>
+</html>
