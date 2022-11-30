@@ -1,0 +1,14 @@
+<!--pages/test/test.wxml-->
+<view>
+  <swiper class="container">
+    <swiper-item>
+      <view class="item">A</view>
+    </swiper-item>
+    <swiper-item>
+      <view class="item">B</view>
+    </swiper-item>
+    <swiper-item>
+      <view class="item">C</view>
+    </swiper-item>
+  </swiper>
+</view>
