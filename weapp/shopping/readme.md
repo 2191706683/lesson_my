@@ -117,3 +117,112 @@
     w-goods 容器组件  集合
     w-goods-item 功能
   4. 
+
+      
+- 小程序组件语法
+  1. Component({
+
+  })
+  2. 通用组件 components/  复用
+    组成页面的组件， 不怎么复用的， 就放在相应page 目录下
+    页面简单， 可读性提升， 便于维护 
+  3. 数据有  properties（派发） + data(私有) 
+  4. 方法是放在 methods 
+    this.triggerEvent(页面的自定义事件， 传递的参数)
+  5. 页面上  <demo data={}  bind:event="">
+    自定义事件 添加在页面等待回调的函数
+
+- 详情页开发套路
+  关注点在组件和交互
+  1. onLoad 解析请求参数 id
+  2. 将请求的方法独立封装出来
+  3. 页面和请求分离
+  4. service/
+    添加了一个detail方法
+    每个page 都会在 service 下有个对应的文件
+  5. 页面的组件化
+    看设计稿， 划分组件
+    工作任务会以组件为单位
+  6. 分析数据， 数据驱动的界面或组件开发
+    切页面 wxml + wxss  应该发生在组件里， 而不是page下
+  7. 组件功能及表现， 如果不清除， 去找后端， 设计师， 产品
+  8. 对页面的重要数据进行建模， models/
+    严格把关数据的过程
+
+- serverice 目录架构思路
+  1. 管理所有的网络请求 
+    管理着baseURL 和 统一的request 方法
+  2. 每个页面一个单独的.js 文件， 提供请求方法
+    代码的可读性和管理
+  3. 高效发出请求
+    不用每个请求都去重复 wx.request
+
+- 组件的思维
+  1. 页面由组件构成
+  2. components  (共享) 组件和组成单个页面的组件 (可读)
+  3. 组件可以跨页面， 跨项目， 开源到npm市场
+    该项目要不要写vant ？不需要
+    当我们做商业项目 大型一些可以采用
+    使用第三方组件， 加快开发速度
+
+- 接口的认识
+  1. 已有后端提供的接口
+  2. 加入项目刚开始， 没有接口可用怎么办
+ 
+
+  切换
+  3. 不要等接口
+    我用fastmock, json 格式， 提供假接口
+    满足页面展示功能就可以了
+  4. 等到后端接口上线了，将请求地址切换到线上地址，启用真接口
+  5. 在前后端分离之前，接口文档写出来，
+    约定好
+      URL  /home/multidata
+      返回的格式
+
+- 首页接口， 为何要分两个接口呢？
+  1. 商品表(评论表)， 基础接口
+    后端执行是快的， 就一两条
+  2. 相关推荐
+    大数据， 推荐算法， 不是查表， 是要计算的
+    耗时， 会影响页面显示的速度
+  3. onLoad  --列出
+    this._getGoodsInfo()
+    this._getRecommends()
+
+- 父子组件通信
+  1. page 是父亲
+    向子组件提供properties
+    还绑定了一个自定义事件 bind:event="handler"
+  2. 子组件
+    可以通过this.triggerEvent('event',...params)
+    向父组件通信，
+
+- 加入购物车的商品， 如何到购物车页面也可以显示出来呢？
+  app.js globalData
+
+- 购物车页面开发规则
+  1. 数据来自 app.globalData
+  2. 生命周期的概念
+    - app.js  onLaunch
+    - home.js  onLoad onShow... onunload
+    - cart.js
+      onLoad  只会执行一次
+      onShow  会执行多次 更新购物车数据
+
+- 数组的es6方法
+  1. for(let i = 0; i < arr.length; i++) {
+    计数循环， 对cpu友好， 但是对人不OK，可读性不好
+  }
+    如果下标很重要
+  2. 优化 使用了 for es6的升级版
+    for (let item of arr) {
+
+    }
+  3. 数组好多功能方法
+    forEach 让每个元素都执行一个回调函数
+    find  仍然会像forEach 一样， 回调函数 return true， 返回当前项
+    reduce  累加计算
+    
+
+
