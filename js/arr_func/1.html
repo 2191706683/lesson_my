@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="root">
+
+    </ul>
+    <script>
+        // 前端
+        // 拉取数据？
+        // https://www.fastmock.site/mock/fc09142a9029fcb292822d4ee872f52b/beers/banners 接口地址
+        // 后端
+        // 异步
+        const list = document.getElementById('root')
+        const p = fetch('https://www.fastmock.site/mock/fc09142a9029fcb292822d4ee872f52b/beers/banners')
+        // pending  promise 启动状态
+        // fullfiled 成功的解决
+        // rejected 失败
+        // 控制执行流程
+        p
+         .then(res => {
+            // 二进制流的方式到达我们的应用的时候，它的json化也是需要花时间的， promise 实例
+            return res.json()
+            // console.log(res.json())
+            // return res.json
+         })
+        //  promise 实例
+         .then(data => {
+            console.log(data)
+            const lis = data.map(item => `
+                    <li>
+                        <div>
+                            ${item.id}
+                            ${item.title}
+                            <img src="${item.img}">
+                        </div>
+                    </li>
+                `)
+            // lis 数组每一项 都是li的html 片段
+            // console.log(lis)
+            list.innerHTML = lis.join('')
+            /* data.forEach(item => {
+                // map es6 array  方法   数组变形
+                // reduce
+                list.innerHTML += `
+                    <li>
+                        <div>
+                            ${item.id}
+                            ${item.title}
+                            <img src="${item.img}">
+                        </div>
+                    </li>
+                `
+            }) */
+         })
+         .catch(e => {
+            console.log(e)
+         })
+    </script>
+
+</body>
+</html>
