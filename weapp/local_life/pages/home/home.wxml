@@ -1,0 +1,19 @@
+<!--pages/home/home.wxml-->
+<swiper indicator-dots circular>
+  <swiper-item wx:for="{{swiperList}}" wx:key="id">
+    <image src="{{item.image}}" mode=""/>
+  </swiper-item>
+</swiper>
+
+<view class="grid-list">
+  <view class="grid-item" wx:for="{{gridList}}" wx:key="id">
+    <image src="{{item.icon}}" mode=""/>
+    <text>{{item.name}}</text>
+  </view>
+</view>
+
+<view class="img-box">
+  <image src="/images/link-01.png" mode="widthFix"/>
+  <image src="/images/link-02.png" mode="widthFix"/>
+</view>
+
