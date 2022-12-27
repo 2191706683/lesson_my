@@ -1,1 +1,31 @@
 /* components/explore-content/explore-content.wxss */
+.container {
+  padding: 0 30rpx 0 30rpx;
+  border: 1px solid #000;
+}
+.title {
+  display: flex;
+  align-items: center;
+}
+.img {
+  border-radius: 50%;
+  flex: 1;
+  margin-right: 15rpx;
+}
+.description {
+  border: 1px solid #000;
+  flex: 6
+}
+.description .author{
+  font-size: 11pt;
+  font-weight: 500;
+}
+.description .date {
+  font-size: 7pt;
+  color: #7e7b7b;
+}
+.follow {
+  padding: 13rpx;
+  font-size: 11pt;
+  border: 1px solid #000;
+}

@@ -1,2 +1,19 @@
 <!--components/explore-content/explore-content.wxml-->
-<text>components/explore-content/explore-content.wxml</text>
+<view class="container">
+  <view class="item" wx:for="{{cardList}}" wx:key="id">
+    <view class="title">
+      <image class="img" src="{{item.pic}}" mode="widthFix" />
+      <view class="description">
+        <view class="author">{{item.author}}</view>
+        <view class="date">{{item.date}}</view>
+      </view>
+      <view class="follow">关注</view>
+    </view>
+    <view class="content">
+      <view class="article"></view>
+      <view class="img">
+        <image src="" mode=""/>
+      </view>
+    </view>
+  </view>
+</view>

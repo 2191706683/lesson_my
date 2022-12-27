@@ -1,7 +1,7 @@
 /* components/explore-stick/explore-stick.wxss */
 .container {
   padding: 15rpx 30rpx 5rpx 30rpx;
-  border-top: 2rpx solid #f6f7f7;
+  border-top: 2rpx solid #e4e6e6;
 }
 .item {
   margin-bottom: 6rpx;
