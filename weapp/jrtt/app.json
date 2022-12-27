@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/video/video",
+    "pages/store/store",
+    "pages/user/user"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "selectedColor": "#d81e06",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/icon/news.png",
+        "selectedIconPath": "images/icon/news-active.png"
+      },
+      {
+        "pagePath": "pages/video/video",
+        "text": "视频",
+        "iconPath": "images/icon/video.png",
+        "selectedIconPath": "images/icon/video-active.png"
+      },
+      {
+        "pagePath": "pages/store/store",
+        "text": "商城",
+        "iconPath": "images/icon/store.png",
+        "selectedIconPath": "images/icon/store-active.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "用户",
+        "iconPath": "images/icon/user.png",
+        "selectedIconPath": "images/icon/user-active.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-tab": "/miniprogram_npm/@vant/weapp/tab/index",
+    "van-tabs": "/miniprogram_npm/@vant/weapp/tabs/index"
+  }
+}

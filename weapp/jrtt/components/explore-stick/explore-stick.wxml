@@ -1,0 +1,11 @@
+<!--components/explore-stick/explore-stick.wxml-->
+<view class="container">
+  <view wx:for="{{top}}" wx:key="id" class="item">
+    <view class="title">{{item.title}}</view>
+    <view class="description">
+      <text class="up">{{item.up}}</text>
+      <text class="author">{{item.author}}</text>
+      <text class="comment">{{item.comment}}</text>
+    </view>
+  </view>
+</view>
