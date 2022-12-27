@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "explore-stick": "/components/explore-stick/explore-stick",
-    "explore-content": "/components/explore-content/explore-content"
+    "explore-content": "/components/explore-content/explore-content",
+    "search": "/components/search/search"
   }
 }

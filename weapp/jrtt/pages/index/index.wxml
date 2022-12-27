@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<van-tabs active="{{ active }}" swipeable sticky>
+<van-tabs active="{{ active }}" swipeable sticky animated>
   <van-tab title="关注">
     <view class="test test0"></view>
   </van-tab>

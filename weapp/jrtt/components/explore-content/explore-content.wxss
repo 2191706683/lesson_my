@@ -1,20 +1,20 @@
 /* components/explore-content/explore-content.wxss */
-.container {
-  padding: 0 30rpx 0 30rpx;
-  border: 1px solid #000;
+.item {
+  border-top: 12rpx solid #ececec;
+  padding: 30rpx 30rpx 0 30rpx;
 }
 .title {
   display: flex;
   align-items: center;
+  padding-bottom: 30rpx;
 }
-.img {
+.photo {
   border-radius: 50%;
   flex: 1;
   margin-right: 15rpx;
 }
 .description {
-  border: 1px solid #000;
-  flex: 6
+  flex: 6;
 }
 .description .author{
   font-size: 11pt;
@@ -25,7 +25,32 @@
   color: #7e7b7b;
 }
 .follow {
-  padding: 13rpx;
+  padding: 4rpx 24rpx;
   font-size: 11pt;
-  border: 1px solid #000;
+  border: 1px solid #ececec;
+}
+.article {
+  line-height: 55rpx;
+}
+.img {
+  margin-top: 10rpx;
+}
+.foot {
+  margin-top: 25rpx;
+  margin-bottom: 40rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.foot view {
+  display: flex;
+  align-items: center;
+}
+.foot view text {
+  margin-left: 12rpx;
+  font-size: 9pt;
+}
+.foot image {
+  width: 35rpx;
+  height: 35rpx;
 }
