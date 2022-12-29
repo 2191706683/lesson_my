@@ -1,0 +1,11 @@
+/* pages/user/childCpns/jr-user_head/jr-user_head.wxss */
+.top {
+  background-color: #738896;
+  color: #fff;
+}
+.top image {
+  border: 2rpx solid #fff;
+  border-radius: 50%;
+  width: 155rpx;
+  height: 155rpx;
+}

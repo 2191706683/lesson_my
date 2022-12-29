@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "jr-user_head": "./childCpns/jr-user_head/jr-user_head",
+    "jr-user_body": "./childCpns/jr-user_body/jr-user_body",
+    "jr-user_foot": "./childCpns/jr-user_foot/jr-user_foot"
+  }
 }

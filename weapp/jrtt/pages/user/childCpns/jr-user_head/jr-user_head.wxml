@@ -1,0 +1,15 @@
+<!--pages/user/childCpns/jr-user_head/jr-user_head.wxml-->
+<view class="item">
+  <view class="top">
+    <image src="https://i2.hdslb.com/bfs/face/eb386c16f78b28d950d8d9386f58f6cab3ed98e9.jpg@96w_96h.webp" mode="" />
+    <view class="message">
+      <view class="name">吃腻的奶油</view>
+      <view class="state">
+        <text class="follow">0关注</text>
+        <text class="fans">0粉丝</text>
+        <text class="liked">0获赞</text>
+      </view>
+    </view>
+  </view>
+
+</view>

@@ -4,14 +4,15 @@
     <view class="test test0"></view>
   </van-tab>
   <van-tab title="推荐">
-    <view class="test test1"></view>
+    <jr-stick top="{{recommendTop}}" />
+    <jr-recommend/>
   </van-tab>
   <van-tab title="探索" class="explore">
-    <explore-stick/>
-    <explore-content/>
+    <jr-stick top="{{exploreTop}}" />
+    <jr-explore/>
   </van-tab>
   <van-tab title="热榜">
-    <view class="test test3"></view>
+    <jr-hot/>
   </van-tab>
   <van-tab title="发现">
     <view class="test test4"></view>

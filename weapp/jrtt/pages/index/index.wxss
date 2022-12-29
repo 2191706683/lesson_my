@@ -1,5 +1,7 @@
 /**index.wxss**/
-
+.tabSize {
+  font-size: 18pt;
+}
 .test {
   width: 100%;
   height: 800vw;

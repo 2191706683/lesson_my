@@ -1,0 +1,30 @@
+/* components/explore-content/explore-content.wxss */
+.item {
+  border-top: 2rpx solid #e4e6e6;
+  padding: 20rpx 30rpx 0 30rpx;
+}
+
+.article {
+  line-height: 55rpx;
+}
+.img {
+  margin-top: 10rpx;
+}
+.foot {
+  margin-top: -6rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.description {
+  font-size: 7pt;
+}
+.description text {
+  margin-right: 15rpx;
+  color: #7e7b7b;
+}
+.foot image {
+  width: 35rpx;
+  height: 35rpx;
+}

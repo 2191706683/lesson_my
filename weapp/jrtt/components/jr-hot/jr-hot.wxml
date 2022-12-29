@@ -1,0 +1,43 @@
+<!--components/jr-hot/jr-hot.wxml-->
+<view class="tab">
+  <van-tabs active="{{ active }}" type="card">
+    <van-tab title="热榜">
+      <view class="test test0"></view>
+    </van-tab>
+    <van-tab title="疫情榜">
+    </van-tab>
+    <van-tab title="科技榜" class="explore">
+      <jr-stick top="{{exploreTop}}" />
+      <jr-explore />
+    </van-tab>
+    <van-tab title="足球榜">
+      <jr-hot />
+    </van-tab>
+    <van-tab title="军事榜">
+      <view class="test test4"></view>
+    </van-tab>
+    <van-tab title="教育榜">
+      <view class="test test5"></view>
+    </van-tab>
+    <van-tab title="游戏榜">
+      <view class="test test6"></view>
+    </van-tab>
+    <van-tab title="娱乐榜">
+      <view class="test test7"></view>
+    </van-tab>
+  </van-tabs>
+</view>
+<view class="item">
+  <view class="top">
+    <image src="/images/icon/top.png" mode="widthFix" />
+    <text>{{top}}</text>
+  </view>
+  <view class="content" wx:for="{{hotList}}" wx:key="id">
+    <text class="id">{{item.id}}</text>
+    <text class="title">{{item.title}}</text>
+  </view>
+</view>
+<view class="pull">
+  <text>展开更多</text>
+  <image src="/images/icon/pull.png" mode="widthFix" />
+</view>

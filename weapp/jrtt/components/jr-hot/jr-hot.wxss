@@ -1,0 +1,41 @@
+/* components/jr-hot/jr-hot.wxss */
+.tab {
+  margin-top: 30rpx;
+}
+.item {
+  padding: 30rpx 30rpx 18rpx 30rpx;
+  border-top: 2rpx solid #e4e6e6;
+}
+.item text{
+  font-size: 11pt;
+}
+.top {
+  display: flex;
+  padding: 20rpx 0 30rpx 0;
+  border-bottom: 1rpx solid #e4e6e6;
+  align-items: center;
+}
+.top image {
+  width: 33rpx;
+  height: 33rpx;
+  margin-right: 20rpx;
+}
+.content {
+  padding: 30rpx 0 30rpx 10rpx;
+  border-bottom: 1rpx solid #e4e6e6;
+}
+.content .id {
+  margin-right: 20rpx;
+  color: #d81e06;
+}
+.pull {
+  display: flex;
+  padding: 10rpx 0 20rpx 0;
+  justify-content: center;
+  align-items: center;
+  font-size: 10pt;
+}
+.pull image {
+  margin-left: 10rpx;
+  width: 33rpx;
+}

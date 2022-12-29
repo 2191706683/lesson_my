@@ -8,7 +8,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "今日头条",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
