@@ -1,0 +1,12 @@
+<!--index.wxml-->
+<view class="page">
+  <swiper class="banner" indicator-dots>
+    <swiper-item wx:for="{{banners}}"
+      wx:key="id" 
+      bindtap="gotoDetail"
+      data-id="{{item.id}}"
+    >
+      <image src="{{item.pic}}" mode=""/>
+    </swiper-item>
+  </swiper>
+</view>
