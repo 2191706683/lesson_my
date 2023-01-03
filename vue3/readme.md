@@ -33,11 +33,24 @@
     this.$data.content = ''
     vue ? 比react 更友好, 方便入门, 学习成本低
     API 设计人性化
-    
+
 - Vue 底层源码
     1. data {} 如何被监听, 重新编译模板  Proxy es6
     2. Vue 世界为什么要杜绝DOM 编程 #app ?
         DOM 编程慢...
+
+- 占位符与数据绑定的区别
+    普通的html 里输出的 占位符  {{}}
+    标签的属性 或组件的props 里 数据绑定
+    - v-bind:value 绑定值  :value v-bind 单项数据绑定   
+        v-on:input 绑定事件  v-on  简写为  @
+    - 单向数据?
+        v-bind:value + v-on:input  复杂 出现在 表单元素中
+    - 双向数据绑定
+        v-model = v-bind:value + v-on:input
+        api更友好
+        
+    
 
 
     
