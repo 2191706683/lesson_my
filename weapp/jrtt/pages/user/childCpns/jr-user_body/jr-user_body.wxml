@@ -1,2 +1,9 @@
 <!--pages/user/childCpns/jr-user_body/jr-user_body.wxml-->
-<text>pages/user/childCpns/jr-user_body/jr-user_body.wxml</text>
+<view class="page">
+  <view class="grid-list">
+    <view class="grid-item" wx:for="{{gridList}}" wx:key="id">
+      <image src="{{item.icon}}" mode="" />
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+</view>

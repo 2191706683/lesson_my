@@ -2,7 +2,6 @@
   "pages": [
     "pages/index/index",
     "pages/video/video",
-    "pages/store/store",
     "pages/user/user"
   ],
   "window": {
@@ -26,12 +25,6 @@
         "text": "视频",
         "iconPath": "images/icon/video.png",
         "selectedIconPath": "images/icon/video-active.png"
-      },
-      {
-        "pagePath": "pages/store/store",
-        "text": "商城",
-        "iconPath": "images/icon/store.png",
-        "selectedIconPath": "images/icon/store-active.png"
       },
       {
         "pagePath": "pages/user/user",

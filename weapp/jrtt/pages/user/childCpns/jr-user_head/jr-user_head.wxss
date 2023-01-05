@@ -1,11 +1,71 @@
 /* pages/user/childCpns/jr-user_head/jr-user_head.wxss */
-.top {
-  background-color: #738896;
+.item {
+  background-color: #956d6d;
+  padding: 30rpx 30rpx 0 30rpx;
   color: #fff;
+}
+
+.top {
+  display: flex;
+  align-items: center;
 }
 .top image {
   border: 2rpx solid #fff;
   border-radius: 50%;
-  width: 155rpx;
-  height: 155rpx;
+  width: 150rpx;
+  height: 150rpx;
+}
+.top .message {
+  display: flex;
+  margin-left: 25rpx;
+  height: 116rpx;
+  flex-direction: column;
+  justify-content: space-around;
+  font-weight: 600;
+}
+.follow, .fans, .liked {
+  margin-right: 35rpx;
+}
+.follow text, .fans text, .liked text {
+  margin-left: 6rpx;
+  font-size: 10pt;
+  font-weight: normal;
+}
+.description {
+  display: flex;
+  height: 200rpx;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10rpx 0 20rpx;
+}
+.description text {
+  background-color: #b39796;
+}
+.description .tag {
+  width: 220rpx;
+  padding: 2rpx 10rpx;
+  font-size: 8pt;
+  border-radius: 6rpx;
+}
+.description .introduction {
+  font-size: 10pt;
+}
+.description .btns {
+  display: flex;
+}
+.btns text {
+  display: flex;
+  padding: 0 40rpx;
+  margin-right: 13rpx;
+  text-align: center;
+  align-items: center;
+  font-size: 10pt;
+  border-radius: 6rpx;
+}
+.btns image {
+  background-color: #b39796;
+  width: 50rpx;
+  height: 50rpx;
+  padding: 6rpx;
+  border-radius: 6rpx;
 }

@@ -1,4 +1,6 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "explore-item": "./childCpns/explore-item"
+  }
 }

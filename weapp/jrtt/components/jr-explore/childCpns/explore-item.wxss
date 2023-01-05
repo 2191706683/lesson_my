@@ -1,70 +1,49 @@
-/* pages/video/video.wxss */
-.item {
-  border-top: 1rpx solid #ececec;
-  padding: 30rpx 30rpx 0 30rpx;
-}
+/* components/jr-explore/childCpns/explore-item.wxss */
 .title {
   position: relative;
   display: flex;
   align-items: center;
   padding-bottom: 30rpx;
+  width: 100%;
 }
 .photo {
   border-radius: 50%;
   margin-right: 15rpx;
-  width: 50rpx;
-  height: 50rpx;
-}
-.description {
-  flex: 6;
+  width: 80rpx;
 }
 .description .author{
   font-size: 11pt;
   font-weight: 500;
 }
-.aside {
-  display: flex;
+.description .date {
+  font-size: 7pt;
+  color: #7e7b7b;
 }
 .follow {
   position: absolute;
-  right: 70rpx;
+  right: 0;
   padding: 4rpx 24rpx;
   font-size: 11pt;
   border: 1px solid #ececec;
 }
-.more {
-  width: 50rpx;
-  height: 50rpx
+.followed {
+  position: absolute;
+  right: 0;
+  padding: 4rpx 24rpx;
+  font-size: 11pt;
+  color: #9a9a9a;
 }
 .article {
   line-height: 55rpx;
-  font-weight: 700;
 }
-.video {
+.img {
   margin-top: 10rpx;
-}
-.video video {
-  width: 100%;
-}
-.video image {
-  position: relative;
-  width: 100%;
-}
-.video image .label {
-  position: absolute;
-  bottom: 16rpx;
-  right: 16rpx;
-  font-size: 12pt;
-  padding: 4rpx 8rpx;
-  background: rgba(0, 0, 0, 0.85);
-  color: rgba(255, 255, 255, 0.9);
-  border-radius: 4rpx;
 }
 .foot {
   margin-top: 25rpx;
   margin-bottom: 40rpx;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 .foot view {

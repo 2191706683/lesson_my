@@ -1,2 +1,53 @@
 <!--pages/video/video.wxml-->
-<text>pages/video/video.wxml</text>
+<view class="item" wx:for="{{viedoList}}" wx:key="id">
+  <view class="title">
+  <image class="photo" src="{{item.pic}}" mode="widthFix" />
+  <view class="description">
+    <view class="author">{{item.author}}</view>
+  </view>
+  <view class="aside">
+    <view class="follow">关注</view>
+    <image class="more" src="/images/icon/more.png" mode="widthFix" />
+  </view>
+</view>
+<view class="content">
+  <view class="article">{{item.article}}</view>
+  <view class="video">
+    <video
+      id="video-{{item.id}}"
+      hidden="{{currentVid !== item.id}}" 
+      poster="{{item.image}}"
+      object-fit="cover"
+      duration="{{item.duration_raw}}"
+      src="{{item.video}}"
+    ></video>
+    <image
+      hidden="{{currentVid === item.id}}"
+      src="{{item.image}}" 
+      data-vid="{{item.id}}"
+      bindtap="play"
+      mode="aspectFill"
+    >
+      <view class="label">{{item.duration}}</view>
+    </image>
+  </view>
+</view>
+<view class="foot">
+  <view class="share">
+    <image src="/images/icon/share.png" mode="" />
+    <text>分享</text>
+  </view>
+  <view class="comment">
+    <image src="/images/icon/comment.png" mode="" />
+    <text>9213</text>
+  </view>
+  <view class="like">
+    <image src="/images/icon/like.png" mode="" />
+    <text>1.3万</text>
+  </view>
+  <view class="favorite">
+    <image src="/images/icon/favorite.png" mode="" />
+    <text>收藏</text>
+  </view>
+</view>
+</view>

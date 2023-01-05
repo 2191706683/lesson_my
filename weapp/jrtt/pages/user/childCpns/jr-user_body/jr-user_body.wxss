@@ -1,1 +1,21 @@
 /* pages/user/childCpns/jr-user_body/jr-user_body.wxss */
+.grid-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.grid-item {
+  display: flex;
+  width: 25%;
+  flex-direction: column;
+  height: 150rpx;
+  justify-content: center;
+  align-items: center;
+}
+.grid-item image {
+  width: 45rpx;
+  height: 45rpx;
+}
+.grid-item text {
+  font-size: 9pt;
+  margin-top: 12rpx;
+}

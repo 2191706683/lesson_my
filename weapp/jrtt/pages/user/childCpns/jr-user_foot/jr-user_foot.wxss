@@ -1,1 +1,28 @@
 /* pages/user/childCpns/jr-user_foot/jr-user_foot.wxss */
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60rpx;
+  border-top: 14rpx solid #f2f2f2;
+}
+.page image {
+  padding: 15rpx 0;
+  width: 140rpx;
+  height: 120rpx;
+}
+.page .title {
+  padding: 15rpx 0;
+}
+.page .publish {
+  margin-top: 15rpx;
+  padding: 15rpx 20rpx;
+  width: 150rpx;
+  height: 40rpx;
+  text-align: center;
+  line-height: 40rpx;
+  color: #fff;
+  background-color: #ee4141;
+  border-radius: 4rpx;
+  font-size: 11pt;
+}

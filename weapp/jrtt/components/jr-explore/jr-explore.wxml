@@ -1,40 +1,6 @@
 <!--components/jr-explore/jr-explore.wxml-->
 <view class="container">
-  <view class="item" wx:for="{{cardList}}" wx:key="id">
-    <view class="title">
-      <image class="photo" src="{{item.pic}}" mode="widthFix" />
-      <view class="description">
-        <view class="author">{{item.author}}</view>
-        <view class="date">{{item.date}}</view>
-      </view>
-      <view class="follow">关注</view>
-    </view>
-    <view class="content">
-      <view class="article">{{item.article}}</view>
-      <view class="img">
-        <image src="{{item.img}}" mode="widthFix"/>
-      </view>
-    </view>
-    <view class="foot">
-      <view class="share">
-        <image src="/images/icon/share.png" mode=""/>
-        <text>分享</text>
-      </view>
-      <view class="comment">
-        <image src="/images/icon/comment.png" mode=""/>
-        <text>9213</text>
-      </view>
-      <view class="like">
-        <image src="/images/icon/like.png" mode=""/>
-        <text>1.3万</text>
-      </view>
-      <view class="favorite">
-        <image src="/images/icon/favorite.png" mode=""/>
-        <text>收藏</text>
-      </view>
-      <view class="close">
-        <image src="/images/icon/close.png" mode=""/>
-      </view>
-    </view>
+  <view class="item">
+   <explore-item wx:for="{{cardList}}" wx:key="id" item="{{item}}" />
   </view>
 </view>

@@ -30,9 +30,9 @@
 <view class="item">
   <view class="top">
     <image src="/images/icon/top.png" mode="widthFix" />
-    <text>{{top}}</text>
+    <text>{{hot.top}}</text>
   </view>
-  <view class="content" wx:for="{{hotList}}" wx:key="id">
+  <view class="content" wx:for="{{hot.hotList}}" wx:key="id">
     <text class="id">{{item.id}}</text>
     <text class="title">{{item.title}}</text>
   </view>

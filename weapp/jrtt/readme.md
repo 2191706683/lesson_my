@@ -9,3 +9,8 @@
   3. 相关图片链接
     头像：https://www.bilibili.com/
     图片：https://wallhaven.cc/
+  
+- 踩坑
+  换行的时候记住每一行后面不要有空格
+- 最后
+  如果想要运行该项目，在project.config.json中找到appid，修改成自己的appid

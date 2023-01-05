@@ -5,11 +5,19 @@
     <view class="message">
       <view class="name">吃腻的奶油</view>
       <view class="state">
-        <text class="follow">0关注</text>
-        <text class="fans">0粉丝</text>
-        <text class="liked">0获赞</text>
+        <text class="follow">0<text>关注</text></text>
+        <text class="fans">0<text>粉丝</text></text>
+        <text class="liked">0<text>获赞</text></text>
       </view>
     </view>
   </view>
-
+  <view class="description">
+    <text class="tag">+ 添加年龄、学校标签</text>
+    <view class="introduction">填写简介更容易获得大家的关注,点击添加 ></view>
+    <view class="btns">
+      <text>申请认证</text>
+      <text>编辑资料</text>
+      <image src="/images/icon/share-white.png" mode="widthFix" />
+    </view>
+  </view>
 </view>
