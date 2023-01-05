@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <!-- app vue 数据驱动  -->
+        <div id="app"></div>
+        <input type="text" id="todo-input">
+        <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <script>
+            // jquery  DOM 框架 
+            // const app = document.getElementById('app'); // 原生
+            // $('#app').html('hello world')
+            // vue  杜绝DOM编程 因为DOM编程性能比较差
+            $('#todo-input')
+                .on('input', function() {
+                    let todo = $(this).val()
+                    // console.log(todo)
+                    $('#app').html(todo)
+                })
+        </script>
+    </div>
+</body>
+</html>
