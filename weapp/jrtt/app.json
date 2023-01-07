@@ -3,6 +3,7 @@
     "pages/index/index",
     "pages/video/video",
     "pages/user/user"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
