@@ -4,7 +4,7 @@
     <jr-stick top="{{recommendTop}}" />
     <jr-recommend cardList="{{recommendList}}" />
   </van-tab>
-  <van-tab title="探索" class="explore">
+  <van-tab title="探索">
     <jr-stick top="{{exploreTop}}" />
     <jr-explore cardList="{{exploreList}}"/>
   </van-tab>

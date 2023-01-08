@@ -1,8 +1,0 @@
-/* components/search/search.wxss */
-.search {
-  position: relative;
-  width: 200rpx;
-  height: 50rpx;
-  top:0;
-  left:0;
-}

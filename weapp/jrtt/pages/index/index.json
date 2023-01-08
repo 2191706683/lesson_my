@@ -3,7 +3,6 @@
     "jr-stick": "/components/jr-stick/jr-stick",
     "jr-explore": "/components/jr-explore/jr-explore",
     "jr-recommend": "/components/jr-recommend/jr-recommend",
-    "jr-hot": "/components/jr-hot/jr-hot",
-    "search": "/components/search/search"
+    "jr-hot": "/components/jr-hot/jr-hot"
   }
 }

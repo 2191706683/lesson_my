@@ -1,6 +1,4 @@
 <!--components/jr-explore/jr-explore.wxml-->
-<view class="container">
   <view class="item">
    <explore-item wx:for="{{cardList}}" wx:key="id" item="{{item}}" />
   </view>
-</view>
