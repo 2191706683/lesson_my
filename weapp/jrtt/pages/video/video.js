@@ -6,7 +6,8 @@ Page({
    */
   data: {
     currentVid: null,
-    currentVideo: null
+    currentVideo: null,
+    videoList: []
   },
   play(event){
     // console.log(event)
