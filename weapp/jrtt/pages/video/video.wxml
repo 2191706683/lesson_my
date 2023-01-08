@@ -1,15 +1,15 @@
 <!--pages/video/video.wxml-->
 <view class="item" wx:for="{{viedoList}}" wx:key="id">
   <view class="title">
-  <image class="photo" src="{{item.pic}}" mode="widthFix" />
-  <view class="description">
-    <view class="author">{{item.author}}</view>
+    <image class="photo" src="{{item.pic}}" mode="widthFix" />
+    <view class="description">
+      <view class="author">{{item.author}}</view>
+    </view>
+    <view class="aside">
+      <view class="follow">关注</view>
+      <image class="more" src="/images/icon/more.png" mode="widthFix" />
+    </view>
   </view>
-  <view class="aside">
-    <view class="follow">关注</view>
-    <image class="more" src="/images/icon/more.png" mode="widthFix" />
-  </view>
-</view>
 <view class="content">
   <view class="article">{{item.article}}</view>
   <view class="video">

@@ -1,4 +1,4 @@
-/* components/explore-stick/explore-stick.wxss */
+/* components/jr-stick/jr-stick.wxss */
 .container {
   padding: 15rpx 30rpx 18rpx 30rpx;
   border-top: 2rpx solid #e4e6e6;

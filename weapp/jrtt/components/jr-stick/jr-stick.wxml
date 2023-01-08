@@ -1,4 +1,4 @@
-<!--components/explore-stick/explore-stick.wxml-->
+<!--components/jr-stick/jr-stick.wxml-->
 <view class="container">
   <view wx:for="{{top}}" wx:key="id" class="item">
     <view class="title">{{item.title}}</view>
