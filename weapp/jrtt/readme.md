@@ -1,18 +1,4 @@
-- 准备工作
-  1. 引入vant
-    先在该项目的终端中输入 npm i @vant/weapp -S --production
-    之后在app.json中 删除 "style": "v2", 防止样式受到干扰
-    最后在工具中点击构建npm即可
-  2. 使用vant
-    需要在app.json导入相应的vant，其他的json中导入无效
-
-  3. 相关图片链接
-    头像：https://www.bilibili.com/
-    图片：https://wallhaven.cc/
-  
-- 踩坑
-  换行的时候记住每一行后面不要有空格
 - 最后
-  如果想要运行该项目，在project.config.json中找到appid，修改成自己的appid
-- 疑惑
-  当编译目标页面时，数据加载不出，但其他页面数据可以加载出来
+  如果想要运行该项目，在project.config.json中找到appid，修改成自己的appid，实在找不到的按Ctrl+F,输入appid即可
+  如果该项目对您的微信小程序中学习有所帮助，希望多多支持并且点击右上角的star，让该项目得到更多人的关注，谢谢!!!
+  

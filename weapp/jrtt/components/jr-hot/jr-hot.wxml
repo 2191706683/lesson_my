@@ -1,7 +1,7 @@
 <!--components/jr-hot/jr-hot.wxml-->
 <view class="tab">
   <van-tabs active="{{ active }}" type="card">
-    <van-tab wx:for="{{hot.hotTab}}" title="{{item}}"></van-tab>
+    <van-tab wx:for="{{hot.hotTab}}" wx:key="index" title="{{item}}"></van-tab>
   </van-tabs>
 </view>
 <view class="item">
