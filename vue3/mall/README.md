@@ -168,6 +168,24 @@
             use开头的函数的称呼
             vue vue-router vuex ... useRoute  方便我们的使用，函数的方式
             composition api 结合的很好
+    - 路由切换的动画
+        vue transition
+        slide-left slide-right
+        首页  ->  detail
+        transition  由右向左
+        detail  ->  首页   由左向右退出
+        1. 路由切换加transition
+            <transition>
+            </transtion>
+        2. vue 内置了transition 组件
+            v-if  v-show router-view  挂载和卸载
+            挂载的时候给我们组件添加 .v-enter-active true 不用像之前的例子那样去:class
+            .v-enter-active {
+                定制的能力很高
+            }
+            卸载时false 自动添加 v-leave-active
+
+
 
 
 
