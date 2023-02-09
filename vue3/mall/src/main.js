@@ -10,7 +10,10 @@ import {
     Swipe, 
     SwipeItem,
     Skeleton,
-    Lazyload
+    Lazyload,
+    ActionBar,
+    ActionBarIcon,
+    ActionBarButton
 } from 'vant'
 /* - 启用全家桶
         router
@@ -25,6 +28,9 @@ app
     .use(SwipeItem)
     .use(Skeleton)
     .use(Lazyload)
+    .use(ActionBar)
+    .use(ActionBarIcon)
+    .use(ActionBarButton)
     .use(router) // 当我们在做SPA 路由接管一切
     .mount('#app')
 

@@ -18,13 +18,16 @@ const router = createRouter({
             path: '/home',
             name: 'home',
             meta: {
-                index
+                index: 1
             },
             component: Home
         },
         {
             path: '/category',
             name: 'category',
+            meta: {
+                index: 1
+            },
             component: () => import('@/views/Category.vue')
         },
         {
@@ -35,6 +38,9 @@ const router = createRouter({
         {
             path: '/product-list',
             name: 'product-list',
+            meta: {
+                index: 2
+            },
             component: () => import('@/views/ProductList.vue')
         },
         {
@@ -55,9 +61,7 @@ const router = createRouter({
                 index: 3
             },
             component: () => import('@/views/Detail.vue')
-        },
-
-       
+        }
     ]
 })
 
