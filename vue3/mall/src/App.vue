@@ -7,7 +7,6 @@ const router = useRouter()
 // 路由守卫 生命周期
 
 router.beforeEach((to, from) => {
-  console.log(from, to, '////')
   if (to.meta.index > from.meta.index) {
     // 从主页面 去到子页面
     state.transitionName = 'slide-left'

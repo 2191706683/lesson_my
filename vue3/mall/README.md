@@ -205,9 +205,38 @@
         v-html  负责安全性
     5. vant 的底部购物组件套装
         badge 徽章  跨页面共享状态 vuex
-        
 
+- 登录注册功能
+    - 鉴权
+    - 登录 注册 两个功能， 合并为一个页面
+    - 验证码功能
+        - 机器作弊， 人工
+        - 组件黑盒子，canvas 返回验证码的imgCode
+            state.imgCode
+        - onSubmit
+            用户填的验证码 和 验证码组件的state.imgCode 比较
+            登录组件里怎么找到验证码组件
+            进入到里面去 拿到imgCode
+            ref 上场了
+            ref 标注一个对象，拿到组件对象
+            - const verifyRef = ref(null) 
+            - template ref = "verifyRef"
+            verifyRef  就是代表验证码组件
+            verifyRef.state
+            
 
+- nextTick
+    响应式数据的修改很快的 网上购物 钱
+    但是页面的热更新确实需要一段时间的
+    - 首页scroll 凸显导航栏效果，极佳的用户体验
+        - nextTick
+            不止是组件挂载了， state 更新模板也完成了
+            window.addEventListener('scroll')  不会争抢
+        - scrollTop
+            state.headerScroll
+        - :class active
+            &.active
+            
 
 
 

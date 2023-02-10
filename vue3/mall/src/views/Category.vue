@@ -12,6 +12,7 @@
                 <i class="iconfont icon-More"></i>
             </header>
         </div>
+        <NavBar />
     </div>
 </template>
 
@@ -36,5 +37,37 @@ onMounted(() => {
 </script>
 
 <style lang="stylus" scoped>
-
+.category
+    .category-header
+        background #fff
+        position fixed
+        left 0
+        top 0
+        fj()
+        wh(100%, 1.33333rem);
+        line-height 1.33333rem
+        padding 0 0.4rem
+        font-size: .4rem;
+        color: #656771;
+        z-index: 10000;
+        .header-search
+            display: flex;
+            width: 80%;
+            height: .53333rem;
+            line-height: .53333rem;
+            box-sizing: content-box;
+            margin: .26667rem 0;
+            padding: .13333rem 0;
+            color: #232326;
+            background: #F7F7F7;
+            border-radius: .53333rem;
+            .nbSearch
+                padding: 0 .26667rem 0 .53333rem;
+                font-size: .45333rem;
+            .search-title
+                font-size: .32rem;
+                color: #666;
+                line-height: .56rem;
+        .icon-More
+            font-size .53333rem
 </style>

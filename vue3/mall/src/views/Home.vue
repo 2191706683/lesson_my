@@ -1,6 +1,6 @@
 <template>
   <div id="home-wrapper">
-    <header class="home-header wrap">
+    <header class="home-header wrap" :class="{ 'active': state.headerScroll }">
       <router-link to="/category">
         <i class="nbicon nbmenu2"></i>
       </router-link>
@@ -24,68 +24,58 @@
     <section class="goods">
       <header class="goods-header">新品上线</header>
       <van-skeleton title :row="3" :loading="state.loading">
-          <!-- slot 插槽 -->
-          <div class="goods-box">
-            <goods-item 
-              v-for="item in state.newGoodses" 
-              :key="item.goodsId"
-              @click="gotoDetial(item.goodsId)"
-              :goods="item"
-            >
-            </goods-item>
-          </div>
+        <!-- slot 插槽 -->
+        <div class="goods-box">
+          <goods-item v-for="item in state.newGoodses" :key="item.goodsId" @click="gotoDetial(item.goodsId)"
+            :goods="item">
+          </goods-item>
+        </div>
       </van-skeleton>
     </section>
     <section class="goods">
       <header class="goods-header">热门商品</header>
       <van-skeleton title :row="3" :loading="state.loading">
-          <!-- slot 插槽 -->
-          <div class="goods-box">
-            <goods-item  
-              v-for="item in state.hotGoodses" 
-              :key="item.goodsId"
-              @click="gotoDetial(item.goodsId)"
-              :goods="item"
-            >
-            </goods-item>
-          </div>
+        <!-- slot 插槽 -->
+        <div class="goods-box">
+          <goods-item v-for="item in state.hotGoodses" :key="item.goodsId" @click="gotoDetial(item.goodsId)"
+            :goods="item">
+          </goods-item>
+        </div>
       </van-skeleton>
     </section>
     <section class="goods">
       <header class="goods-header">最新推荐</header>
       <van-skeleton title :row="3" :loading="state.loading">
-          <!-- slot 插槽 -->
-          <div class="goods-box">
-            <goods-item  
-              v-for="item in state.recommendGoodses" 
-              :key="item.goodsId"
-              @click="gotoDetial(item.goodsId)"
-              :goods="item"
-            >
-            </goods-item>
-          </div>
+        <!-- slot 插槽 -->
+        <div class="goods-box">
+          <goods-item v-for="item in state.recommendGoodses" :key="item.goodsId" @click="gotoDetial(item.goodsId)"
+            :goods="item">
+          </goods-item>
+        </div>
       </van-skeleton>
     </section>
   </div>
 </template>
 
 <script setup>
-import { onMounted, reactive } from 'vue'
+import { onMounted, reactive, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import { getHomeData } from '../service/home'
 import { showLoadingToast, closeToast } from 'vant'
 import NavBar from '~/NavBar.vue'
 import Swiper from '~/Swiper.vue'
 import GoodsItem from '~/GoodsItem.vue'
+import _ from 'lodash'
 
-// es8 异步的高级能力 async await
-// 挂载后再发送api 请求，提升性能，不会去争抢挂载显示
+// es8 异步的高级能力 async 
+// 挂载后再发送api 请求，提升性await能，不会去争抢挂载显示
 // data 响应式的数据
 // 数据的值 对应当前的组件状态
 // 值会改变 对应新的状态
 // 数据和组件的状态是一一对应关系的
 const router = useRouter()
 const state = reactive({
+  headerScroll: false,
   swiperList: [],
   newGoodses: [],
   hotGoodses: [],
@@ -135,7 +125,6 @@ const state = reactive({
     }
   ],
 })
-
 onMounted(async () => {
   showLoadingToast({
     message: '加载中...',
@@ -154,9 +143,26 @@ const gotoDetial = (id) => {
   router.push({
     path: `/detail/${id}`
   })
-  // /detail/:id
-  // console.log(id, 'gotoDetial')
 }
+// state 响应式
+// onMounted, await  getHomeData
+// state.loading = false
+// 热更新 耗时的 dom 更新
+// 什么时候快递到了，热更新已经完成了
+nextTick(() => {
+  // 组件挂载了， 且数据绑定模板 已到位
+  // console.log('nextTick----------')
+  const setHeaderScroll = () => {
+    // console.log('scroll~~~~')
+    // 滚动的距离
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop
+      || document.body.scrollTop
+    // console.log(scrollTop)
+    scrollTop > 100 ? state.headerScroll = true : state.headerScroll = false;
+  }
+  window.addEventListener('scroll', _.throttle(setHeaderScroll, 100))
+
+})
 </script>
 
 <style lang="stylus">
@@ -178,6 +184,12 @@ const gotoDetial = (id) => {
     fj()
     .nbmenu2
         color green
+    &.active
+        background $primary
+        .nbmenu2
+            color #fff
+        .login
+            color #fff
     .header-search
         display flex
         width 74%

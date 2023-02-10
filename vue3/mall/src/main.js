@@ -13,7 +13,10 @@ import {
     Lazyload,
     ActionBar,
     ActionBarIcon,
-    ActionBarButton
+    ActionBarButton,
+    Form,
+    Field,
+    Button
 } from 'vant'
 /* - 启用全家桶
         router
@@ -31,6 +34,9 @@ app
     .use(ActionBar)
     .use(ActionBarIcon)
     .use(ActionBarButton)
+    .use(Form)
+    .use(Field)
+    .use(Button)
     .use(router) // 当我们在做SPA 路由接管一切
     .mount('#app')
 
