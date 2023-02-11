@@ -10,7 +10,7 @@
         <span>分类</span>
       </router-link>
       <router-link class="nav-list-item" to="cart">
-        <i class="nbicon nbgouwuche"></i>
+        <i><van-icon  name="shopping-cart-o" :badge="!cart.count ? '' : cart.count" /></i>
         <span>购物车</span>
       </router-link>
       <router-link class="nav-list-item" to="user">
@@ -22,6 +22,11 @@
 </template>
 
 <script setup>
+// 把store 里的count 拿到这里来
+import { onMounted } from 'vue'
+import { useCartStore } from '@/store/cart.js'
+const cart = useCartStore()
+// console.log(cart.count);
 
 </script>
 

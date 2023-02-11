@@ -1,12 +1,16 @@
 <script setup>
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router' // hooks
+import { useUserStore } from '@/store/user.js'
 
+const { isLogin, updateLogin } = useUserStore()
+console.log(isLogin, '//////////')
 const router = useRouter()
 // 路由跳转前 做件事
 // 路由守卫 生命周期
 
-router.beforeEach((to, from) => {
+router.beforeEach((to, from, next) => {
+  console.log(from, to, '////')
   if (to.meta.index > from.meta.index) {
     // 从主页面 去到子页面
     state.transitionName = 'slide-left'

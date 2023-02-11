@@ -236,6 +236,12 @@
             state.headerScroll
         - :class active
             &.active
+
+- 如何跨组件共享数据
+    - 组件里的 reactive({}) 不一样 私有状态
+    - login 状态
+    - vuex 全家桶成员之一 pinia
+    - store 共享状态所在地
             
 
 

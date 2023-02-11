@@ -49,11 +49,19 @@ const router = createRouter({
         {
             path: '/cart',
             name: 'cart',
+            meta: {
+                index: 1,
+                isLogin: true
+            },
             component: () => import('@/views/Cart.vue')
         },
         {
             path: '/user',
             name: 'user',
+            meta: {
+                index: 1,
+                isLogin: true
+            },
             component: () => import('@/views/User.vue')
         },
         {

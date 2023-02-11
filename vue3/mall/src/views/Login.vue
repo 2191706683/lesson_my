@@ -67,7 +67,7 @@ const onSubmit = async (values) => {
     return
   }
   if (state.type == 'login') {
-    console.log(md5(values.password), '-----')
+    console.log(md5(values.password,'md5密码'), '-----')
     // const { data } = await login({
     //   "loginName": values.username,
     //   // 密码不能明文传输
