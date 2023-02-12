@@ -27,7 +27,11 @@ import { onMounted } from 'vue'
 import { useCartStore } from '@/store/cart.js'
 const cart = useCartStore()
 // console.log(cart.count);
+const { updateCount } = cart;
 
+onMounted(() => {
+    updateCount()
+})
 </script>
 
 <style lang="stylus" scoped>

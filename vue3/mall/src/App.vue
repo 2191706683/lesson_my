@@ -1,28 +1,38 @@
 <script setup>
-import { reactive } from 'vue';
+import { reactive, onMounted } from 'vue';
 import { useRouter } from 'vue-router' // hooks
 import { useUserStore } from '@/store/user.js'
 
 const { isLogin, updateLogin } = useUserStore()
-console.log(isLogin, '//////////')
+// console.log(isLogin, '//////////')
 const router = useRouter()
 // 路由跳转前 做件事
 // 路由守卫 生命周期
 
 router.beforeEach((to, from, next) => {
-  console.log(from, to, '////')
+  // console.log(from, to, '////')
+  if (to.meta.isLogin) { // 需要登录权限才能访问
+    next('/login')
+  } else {
+    next()
+  }
   if (to.meta.index > from.meta.index) {
     // 从主页面 去到子页面
     state.transitionName = 'slide-left'
   } else if (to.meta.index < from.meta.index) {
     state.transitionName = 'slide-right'
   } else {
-    state.transitionName = ''   // 同级无过渡效果
+    // 平级
+    state.transitionName = '' 
   }
 })
 
 const state = reactive({
   transitionName: 'slide-left'
+})
+
+onMounted(() => {
+  updateLogin()
 })
 </script>
 
