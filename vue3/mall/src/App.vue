@@ -3,7 +3,7 @@ import { reactive, onMounted } from 'vue';
 import { useRouter } from 'vue-router' // hooks
 import { useUserStore } from '@/store/user.js'
 
-const { isLogin, updateLogin } = useUserStore()
+const { isLogin } = useUserStore()
 // console.log(isLogin, '//////////')
 const router = useRouter()
 // 路由跳转前 做件事
@@ -32,7 +32,6 @@ const state = reactive({
 })
 
 onMounted(() => {
-  updateLogin()
 })
 </script>
 
@@ -54,7 +53,6 @@ onMounted(() => {
   height: auto;
   top: 0;
   bottom: 0;
-  margin: 0 auto;
   -webkit-overflow-scrolling: touch;
 }
 

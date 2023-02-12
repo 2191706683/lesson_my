@@ -5,13 +5,7 @@ import { defineStore } from 'pinia'
 export const useUserStore = defineStore('user', () => {
   const isLogin = ref(false)
   async function updateLogin() {
-    const p = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, 2000)
-    })
-    await p
-    isLogin.value = true
+    
   }
   return {
     isLogin,
