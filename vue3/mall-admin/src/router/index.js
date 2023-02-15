@@ -19,7 +19,20 @@ const router = createRouter({
             path: '/introduce',
             name: 'introduce',
             component: () => import('@/views/Introduce.vue')
-        }
+        },
+        {
+            path: '/add',
+            name: 'add',
+            meta: {
+                login: true
+            },
+            component: () => import('@/views/Add.vue')
+        },
+        {
+            path: '/login',
+            name: 'login',
+            component: () => import('@/views/Login.vue')
+        },
     ]
 })
 
