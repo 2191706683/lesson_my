@@ -57,6 +57,9 @@
     import { reactive, ref, onMounted } from 'vue';
     import { login } from '@/service/user.js'
     import md5 from 'js-md5'
+    import { setLocal } from '@/utils';
+    import { useRouter } from 'vue-router'
+    const router = useRouter()
 
     const loginForm = ref(null)
     // 初始值为空,组件还没有挂载
@@ -76,7 +79,7 @@
         },
         checked: true,
     })
-    const submitForm = (values) => {
+    const submitForm = () => {
         // 验证表单是否填写正确
         // axios 接口
         loginForm.value.validate(async (valid) => {
@@ -87,11 +90,16 @@
                     username: state.formData.username || '',
                     passwordMd5: md5(state.formData.password)
                 })
+                console.log(data)
+                setLocal('token', data)
+                router.push({
+                    path: '/'
+                })
              }
         })
     }
     onMounted(() => {
-        console.log(loginForm)
+        // console.log(loginForm)
     })
 </script>
 
