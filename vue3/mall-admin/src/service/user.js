@@ -4,6 +4,6 @@ export const login = (params) => {
     return axios.post('/adminUser/login', params)
 }
 
-export const getUserProfile = (params) => {
-    return axios.post('/adminUser/profile', params)
+export const getUserProfile = () => {
+    return axios.get('/adminUser/profile')
 }
