@@ -58,8 +58,9 @@
     import { login } from '@/service/user.js'
     import md5 from 'js-md5'
     import { setLocal } from '@/utils';
-    import { useRouter } from 'vue-router'
+    import { useRouter } from 'vue-router';
     const router = useRouter()
+    // import router from '@/router'
 
     const loginForm = ref(null)
     // 初始值为空,组件还没有挂载
@@ -85,9 +86,9 @@
         loginForm.value.validate(async (valid) => {
             // console.log(valid)
              if (valid) {
-                console.log(state.formData)
+                console.log(state.formData, '----')
                 const { data } = await login({
-                    username: state.formData.username || '',
+                    userName: state.formData.username || '',
                     passwordMd5: md5(state.formData.password)
                 })
                 console.log(data)

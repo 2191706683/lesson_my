@@ -53,6 +53,7 @@ onMounted(async () => {
     setLocal('profile', data)
   } */
   const { data } = await getUserProfile()
+  // console.log(data)
   userStore.setProfile(data)
 })
 </script>
