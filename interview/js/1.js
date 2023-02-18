@@ -47,5 +47,6 @@ console.log(flatten(ary)) */
 // some
 while (ary.some(Array.isArray)) {
     ary = [].concat(...ary)
+    console.log(ary, '--')
 }
 console.log(ary)
