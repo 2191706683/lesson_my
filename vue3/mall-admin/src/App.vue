@@ -26,13 +26,13 @@ router.beforeEach((to, from, next) => {
   document.title = getPageTitle(to.name)
   state.currentPath = to.path
   // if (to.path)
-  console.log(from.path, to.path)
+  // console.log(from.path, to.path)
   if (to.path == '/login') { //如果要去到login
     state.showMenu = false
     next()
   } else {
     // 需要鉴权的页面
-    console.log(getLocal('token'),' token///')
+    // console.log(getLocal('token'),' token///')
     if (to.meta.login && !getLocal('token')) {
       next({
         path: '/login'
