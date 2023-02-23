@@ -10,7 +10,7 @@
 
     const store = useStore()
     const items = computed(() => store.state.cart.items)
-    console.log(items)
+    // console.log(items)
 </script>
     
 <style lang="stylus" scoped>
