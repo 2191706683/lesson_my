@@ -83,8 +83,10 @@
     const submitForm = () => {
         // 验证表单是否填写正确
         // axios 接口
+        console.log(loginForm.value, '----')
+        console.log(loginForm, '----')
         loginForm.value.validate(async (valid) => {
-            // console.log(valid)
+            console.log(valid)
              if (valid) {
                 console.log(state.formData, '----')
                 const { data } = await login({
