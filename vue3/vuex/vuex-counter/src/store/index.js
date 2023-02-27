@@ -4,6 +4,7 @@ const state = {
     count: 0 // 共享状态
 }
 const mutations = {
+    // 修改，而且同步的，简单 规则 有利于状态的正确
     // 怎么修改它才科学？
     increment(state) {
         state.count++
@@ -14,17 +15,22 @@ const mutations = {
 }
 // count 0 -> 1 commit('increment')
 // -> actions -> commit('increment)
+// 适合做各种各样的事情 干事的
+// 提交mutations 
 const actions = {
     increment: ({ commit }) => commit('increment'),
     decrement: ({ commit }) => commit('decrement'),
-    incrementIfodd({ commit, state }) {
+    incrementIfOdd({ commit, state }) {
         if ((state.count + 1) % 2 === 0) {
             commit('increment')
         }
     },
     incrementAsync({ commit }) {
         return new Promise((resolve, reject) => {
-            
+            setTimeout(() => {
+                commit('increment')
+                resolve()
+            }, 1000)
         })
     }
 }
