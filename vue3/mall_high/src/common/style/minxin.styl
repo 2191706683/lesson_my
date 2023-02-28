@@ -1,0 +1,23 @@
+$primary = #1baeae
+$base_font = .13333rem
+
+fj($type=space-between)
+    display flex
+    justify-content $type
+
+wh($width, $height)
+    width $width
+    height $height
+
+border-1px($border-color=$primary)
+    position relative
+    &::before
+        position absolute
+        bottom 0
+        left 0
+        right 0
+        height 1px
+        background-color $border-color
+        transform scaleY(50%)
+        transform-origin 50% 100%
+    border-bottom 1px solid $primary
