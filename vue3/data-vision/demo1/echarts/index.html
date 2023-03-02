@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="container-canvas" width="600" height="400"></canvas>
+    <!-- CDN? 内容分发网络 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.4.1/echarts.min.js"></script>
+    <!-- SVG Canvas 底层绘制API 太麻烦，第三方组件库 -->
+    <script>
+        // echarts 命名空间
+        // 配置优先
+        const chart = echarts.init(document.getElementById('container-canvas'))
+
+        const option = {
+            xAxis: {
+                type: 'category',
+                data: ['question', 'schools', 'philosphers']
+            },
+            yAxis: {
+                type: 'value',
+            },
+            series: [
+                {
+                    data: [17, 25, 35],
+                    type: 'bar'
+                }
+            ]
+        }
+        chart.setOption(option)
+    </script>
+</body>
+</html>

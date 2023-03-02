@@ -22,7 +22,19 @@
 - 数据整理 
 - 绘制API canvas
 - canvas 是画出来的 像素
+- SVG 数学图标声明出来的， 无限拉开
+    声明式
 
+- 为什么Vue 不用DOM 编程？
+    太耗性能  
+    浏览器的原理相关
+    页面渲染 html/css
+    js 执行 由另外的进程管理
+
+- SVG Canvas 区别
+    数据简单， SVG优秀，但SVG的缺点是性能不好，频繁的操作DOM, SVG 依托标签来完成功能
+    canvas 绘图API 更丰富 GPU 负责 性能  大数据 复杂图标的展示
+    API 有点多，底层很那啥？ echarts
 
 
 
