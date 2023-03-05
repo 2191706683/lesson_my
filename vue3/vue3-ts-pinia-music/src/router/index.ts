@@ -13,7 +13,10 @@ const routes: Array<RouteRecordRaw> = [
             {
                 path: '/recommend',
                 name: 'recommend',
-                component: () => import('@/views/recommend/index.vue')
+                component: () => import('@/views/recommend/index.vue'),
+                meta: {
+                    isCover: true
+                }
             }
         ]
            

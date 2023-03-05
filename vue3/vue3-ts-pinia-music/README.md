@@ -31,3 +31,16 @@
 - 多级路由配置
    当如果在页面上还需要开辟子内容区域时，
    children + Tab
+
+- css 准备工作
+   1. stylus 
+      css 超集 变量 嵌套混合等
+      .styl 先编译成css 再运行
+      vite 会自动编译 比 webpack 更好
+   2. reset
+      
+   3. variable mixin 的全局引入
+   4. iconfont
+
+
+

@@ -1,9 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { getBanners } from '@/service/recommend'
-type Banners = {
-
-}
 
 export const useRecommendStore = defineStore('recommend', () => {
     const banners = ref([])
@@ -13,6 +10,7 @@ export const useRecommendStore = defineStore('recommend', () => {
         banners.value = data.banners
     }
     return {
+        banners,
         getBannersData
     }
 })

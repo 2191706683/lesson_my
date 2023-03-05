@@ -1,14 +1,56 @@
 <template>
-    <div>   
-        Home
-        <Recommend />
+    <div class="home">
+        <header class="header">
+            <MyHeader />
+        </header>
+        <aside>
+            <SideBar />
+        </aside>
+        <main class="main" :class="{cover: isCover}">
+            <div class="main-page" id="mainPage" ref="mainRef"></div>
+            <router-view></router-view>
+        </main>
     </div>
 </template>
 
 <script setup lang="ts">
-import Recommend from '@/views/recommend/index.vue'
+import MyHeader from '@/layout/MyHeader/MyHeader.vue'
+import SideBar from '@/layout/SideBar.vue'
+import { computed, ref } from 'vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute()
+const mainRef = ref(null)
+
+const isCover = computed(() => route.meta.isCover)
 </script>
 
-<style scoped>
+<style scoped lang="stylus">
+@import "../assets/css/variables.styl"
 
+@import "../assets/css/variables.styl"
+.main {
+    position: fixed;
+    top: $header-height;
+    right: 0;
+    bottom: $player-height;
+    left: $sidebar-width;
+    z-index: -1;
+    padding-left: 30px;
+    box-sizing: border-box;
+    .main-page {
+      height: 100%;
+      padding-top: 60px;
+      padding-right: 20px;
+      overflow-y: scroll;
+      box-sizing: border-box;
+    }
+    &.cover {
+      padding-left: 0;
+      .main-page {
+        padding-top: 0;
+        padding-right: 0;
+      }
+    }
+  }
 </style>
