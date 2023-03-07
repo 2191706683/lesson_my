@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // html5 file blob 二进制流
+        const upload = function (blob) {
+            let time = Math.round(100 + 500 * Math.random());
+            return new Promise((resolve, reject) => {
+                // 是否执行测试
+                console.log(`run ${time}ms`);
+                // 成功失败概率50%
+                if (Math.random() > 0.1) {
+                    setTimeout(resolve, time, 'promise resolved ' + time + 'ms');
+                } else {
+                    setTimeout(reject, time, 'promise rejected ' + time + 'ms');
+                }
+            });
+        };
+        (async () => {
+            // Promise.all([upload(0), upload(1), upload(2)])
+            //     .then(res => {
+            //         console.log(res)
+            //     })
+            //     .catch(err => {
+            //         console.log(err)
+            //     })
+            // 所有任务成功,总任务成功,有任何一个失败了,没有意义
+            try {
+                let result = await Promise.all([upload(0), upload(1), upload(2)]);
+                console.log(result);
+            } catch (err) {
+                console.error(err);
+            }
+        })();
+    </script>
+</body>
+
+</html>
