@@ -31,9 +31,31 @@
         npm run dev
         webpack webpack.config.js
 
-    
+- loader 的重要概念
+    - 在webpack entry 到 output中间是用于让
+        module 匹配每个规则，
+        再使用相应的loader 去处理的过程
 
+- webpack-dev-server
+    为了性能，把代码放在内存中
 
+- hash?
+    根据文件内容进行计算 得到一个唯一值
+    为了防止浏览器的缓存 CleanWebpackPlugin
 
+- --mode=
+    development 开发阶段
+    production 上线  代码压缩? http 传输 越小越好
+
+- vite 完胜webpack
+    更快 启动快 重新编译快
+    vite 使用了go(rust)代替node 编译
+    webpack 生态成熟
+
+- babel是什么？
+    JS 的编译器 正因为babel es6+ 大胆的使用起来
+    @babel/core babel 的核心库
+    @babel/cli  命令行
+    @babel/preset-env 预处理方式 preset 
 
 
