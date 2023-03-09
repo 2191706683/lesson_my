@@ -126,3 +126,29 @@
         thead + tbdoy 
         row + column 概念
         row.scoped
+
+- element-plus 将图标库分离
+    @element-plus/icons-vue
+    图标库自定义，
+
+- http://backend-api-02.newbee.ltd/manage-api/v1/categories?pageNumber=1&pageSize=10&categoryLevel=1&parentId=0
+    - 新手在做前后端通信的难点
+      /categories  列表请求路径
+      参数复杂时？ 分页参数 pageNumber pageSize
+      categoryLevel parentId?   树状结构复杂
+    - axios.get('', {
+        params: {
+            pageNumber: 1,
+            .....
+        }  
+      })
+
+    - 参数意义
+        1. 分页参数
+            pageNumber
+            pageSize
+        2. 分级树状参数
+            level
+            parent_id   递归 无限级别的核心
+
+            route params
