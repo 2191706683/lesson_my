@@ -1,5 +1,6 @@
 <template>
     <div>
+        <v-header :seller="seller"></v-header>
         <div class="tab border-1px">
             <div class="tab-item">
                 <router-link to="/goods">商品</router-link>
@@ -16,11 +17,24 @@
 </template>
 
 <script>
+import header from './components/header/header.vue'
+import sellerData from './mock/data/seller.json'
 // 没有composition api 没有setup 语法糖
 // 类式 this 
 export default {
+    data() {
+        return {
+            seller: {}
+        }
+    },
     mounted() {
-        console.log(this.$router, this.$route) // useRouter
+        // console.log(this.$router, this.$route) // useRouter
+        setTimeout(() => {
+            this.seller = sellerData.data
+        }, 1000)
+    },
+    components: {
+        'v-header': header
     }
 }
 </script>

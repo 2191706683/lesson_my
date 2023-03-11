@@ -8,3 +8,7 @@ border-1px($color)
     width: 100%
     border-top: 1px solid $color
     content: ' '
+bg($url)
+  background-image url(../images/$url@2x.png)
+  @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3)
+    background-image url(../images/$url@3x.png)
