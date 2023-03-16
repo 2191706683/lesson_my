@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // promisify?
+        let jsonp = function (url, data = {}, callback) {
+            let dataStr = url.indexOf('?') === -1 ? '?' : '&'
+            for (let key in data) {
+                dataStr += `${key}=${data[key]}&`
+            }
+            let cb_name = 'jsonpCallback'
+            dataStr += 'callback=' + cb_name
+            let oScript = document.createElement('script')
+            oScript.src = url + dataStr
+            document.body.appendChild(oScript)
+            window[cb_name] = function(data) {
+                callback(data)
+                document.body.removeChild(oScript) // 打扫战场
+            }
+        }
+
+        jsonp('http://localhost:3000/say', { page: 1, cate: 'recommend' },
+            function (data) {
+                console.log(data)
+            }) 
+    </script>
+    <!-- <script>
+        function callback(data) {
+            console.log(data)
+        }
+    </script> -->
+    <!-- 希望响应是js -->
+    <!-- <script src="http://localhost:3000/say"></script> -->
+    <!-- <script>
+        fetch('http://localhost:3000/say')
+            .then(data => data.json())
+            .then(data => {
+                console.log(data)
+            })
+    </script> -->
+</body>
+
+</html>
