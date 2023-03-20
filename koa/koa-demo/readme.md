@@ -42,7 +42,73 @@
         如果url method 和当前的洋葱模型执行顺序里的路由中间件匹配，它就进入控制器函数执行
         若不匹配呢？ next
 
+- koa的 view 层
+    1. 传统的MVC
+        经典的后端架构方案和设计模式
+        router -> controller(数据准备， 逻辑) -> views(html)
+    2. ctx.render
+        ctx 代表上下文环境 req + res 
+        省略 response
+        ctx.render = ctx.response.render
+    3. views 目录和 view 层
+        配置一下
+    4. 使用ejs 模板引擎
+        {{}}
+        <%= %>
+        for
+        模板编译后 完整的输出给浏览器
+        相比较前后端分离，它只有一个挂载点
+        只有vue的 component 动态
+        - MVVM 大型项目，大公司团队协作
+            前后端分离 更适合 应用打开更快，体验更好， 不用白一下
+        - 前后端分离缺点是啥？
+            SEO 极其差  #root  百度 不会解析js 或者 ajax数据
+            对于手机app里 无所谓SEO的，以体验为先 Mobile First
+            掘金  csdn  搜狐  非常在乎SEO 不适合
+            难道 掘金就要舍弃vue MVVM 回归MVC 吗？
+            服务器端渲染的VUE Nuxt.js
+        - MVC 优点SEO很好
+        - koa-views 中间件挂载到app上
+            - 配置views 所在
+                ctx.render 指定模板的名字
+            - 指定模板引擎 ejs pug
+                <%= %>
+            - 洋葱模型顺序  views 中间件 功能准备型中间件 放置在路由中间件前面
+        - ctx.render
+            模板在服务器端编译 返回所有的hmtl 对SEO 很友好
+                爬虫 也是通过发送请求来建立内容分析 curl 
+        - PC 端入口在百度
+        - 移动端在应用市场 MVVM
 
+- meta viewport
+    SEO 要注意meta 标签的使用
+    head 里 meta 通常用来丰富页面的信息和属性
+    desc 
+    keywords  掘金,稀土,Vue.js,前端面试题,Kotlin,ReactNative,Python
+    viewport 用于适配 PC端不用
+    移动端 init-scale=1.0 width=device-width user-scalable=no
+    乔布斯 开创了移动时代，PC更多，user-scalable 两个手指 缩放页面
+    1024px  PC   -> 750 手机 很小？ 放大
+    现在过时了 Mobile First user-scalable=no  禁用缩放
+    缩放有时候会误操作 触发回到上一页或者下一页
+    www.taobao.com -> m.taobao.com  发起一个301跳转
+    PC 一套 nuxt
+    移动端mobile 单页应用SPA
 
+- 静态资源koa处理
+    - css js image  静态资源
+        - 不归路由（逻辑，数据库，服务器端内存等）管 服务器集群中
+        - 前端写的绝大部分都是静态资源 webpack vite 打包 dist/
+            未来会单独放在cdn 服务器  前端缓存
+    - 单独处理静态资源路由
+    - http://localhost:3000/index.css
+        静态服务器 static + 缓存cache koa-static-cache
+        - / 动态服务器路由， 首页
+        - / 静态服务器  静态服务器中间件放在 路由前面
+            / -> 配置的  /public
+        - 时间内，客户端不用再请求， http 优化的重要理解
+            200 第一次
+            2..  304 NOT Modified
+            MaxAge 一定会去服务器再请求， 再更新
 
 

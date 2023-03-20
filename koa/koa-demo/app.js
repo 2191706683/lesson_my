@@ -1,12 +1,27 @@
 const koa = require('koa')
 const config = require('./config/default.js')
 const app = new koa()
-// MVC的本质
+const path = require('path')
+const views = require('koa-views')
+const staticCache = require('koa-static-cache');
+
 const signupRouter = require('./routers/signup.js')
 const postsRouter = require('./routers/posts.js')
 
+app.use(staticCache(path.join(__dirname, './public'), {dynamic: true,}, {
+    maxAge: 15 * 24 * 60 * 60
+}))
+
+app.use(views(path.join(__dirname, './views'), {
+    extension: 'ejs'
+}))
+
 app.use(signupRouter.routes())
 app.use(postsRouter.routes())
+
+// views 在哪里
+
+
 /* // 如何记录一个请求所花时间
 // 第一个 计时开始
 app.use(async (ctx, next) => {
