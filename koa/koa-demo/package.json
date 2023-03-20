@@ -1,0 +1,15 @@
+{
+  "name": "koa-demo",
+  "version": "1.0.0",
+  "description": "- MVC\r - KOA\r     极简的node 开发框架\r     - context = req + res\r     - 中间件\r         函数",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
