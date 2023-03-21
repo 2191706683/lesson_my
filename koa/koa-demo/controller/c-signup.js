@@ -9,4 +9,6 @@ exports.getSignup = async ctx => {
 
 exports.postSignup = async ctx => {
     // model
+    console.log(ctx.request.body)
+    ctx.body = 'post'
 }

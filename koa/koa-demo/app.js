@@ -4,6 +4,7 @@ const app = new koa()
 const path = require('path')
 const views = require('koa-views')
 const staticCache = require('koa-static-cache');
+const bodyParser = require('koa-bodyparser')
 
 const signupRouter = require('./routers/signup.js')
 const postsRouter = require('./routers/posts.js')
@@ -14,6 +15,10 @@ app.use(staticCache(path.join(__dirname, './public'), {dynamic: true,}, {
 
 app.use(views(path.join(__dirname, './views'), {
     extension: 'ejs'
+}))
+
+app.use(bodyParser({
+    formLimit: '1mb'
 }))
 
 app.use(signupRouter.routes())
