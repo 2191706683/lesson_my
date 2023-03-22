@@ -8,6 +8,7 @@ const bodyParser = require('koa-bodyparser')
 
 const signupRouter = require('./routers/signup.js')
 const postsRouter = require('./routers/posts.js')
+const signinRouter = require('./routers/signin.js')
 
 app.use(staticCache(path.join(__dirname, './public'), {dynamic: true,}, {
     maxAge: 15 * 24 * 60 * 60
@@ -22,6 +23,7 @@ app.use(bodyParser({
 }))
 
 app.use(signupRouter.routes())
+app.use(signinRouter.routes())
 app.use(postsRouter.routes())
 
 // views 在哪里

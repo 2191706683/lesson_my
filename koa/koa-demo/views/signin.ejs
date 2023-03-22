@@ -1,0 +1,39 @@
+<%- include("header", {type: 'signin'}) %>
+<div class="container">
+    <form class="form create" method="post ">
+        <div>
+        <label>用户名：</label> 
+        <input placeholder="用户名" type="text" name="name">
+        </div>
+        <div>
+        <label>密码：</label> 
+        <input placeholder="密码" type="password" name="password">
+        </div>
+        <div class="submit">登录</div>
+    </form>
+</div>
+<script>
+    $(window).keyup(function(e) {
+        if (e.keyCode == 13) {
+            $('.submit').click()
+        }
+    }) 
+    $('.submit').click(function() {
+        if ($('input[name=name]').val().trim() == '' || 
+            $('input[name=password]').val().trim()==''){
+                alert('请输入用户名和密码')
+        } else {
+            $.ajax({
+                url: '/signin',
+                data: $('.form').serialize(),
+                type: 'POST',
+                cache: false,
+                dataType: 'json',
+                success: function(msg) {
+                    
+                }
+            })
+        }
+    })
+</script>
+<%- include("footer") %>

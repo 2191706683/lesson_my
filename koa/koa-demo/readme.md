@@ -144,6 +144,39 @@
     node  单线程 跟法师一样脆 服务器容易崩 一崩了之后所有用户都不响应 做到try catch
     pm2 进程管理工具
 
-
+- 文件上传
+    1. 上传到服务器端
+        哪个文件夹?  static-catch 静态服务器， 缓存
+        缓存  /public/images/
+    2. 之后是可以访问的
+        静态服务器
+    3. fs  模块 写入
+   
+- mysql 业务处理方式
+    1. MVC 的model 层 
+        lib/mysql.js 简版
+        在控制器中调用
+    2. 数据库驱动  mysql2 翻译 
+        驱动mysql 为程序工作 I/O 操作
+        createPool
+        getConnection  链接数据库
+        release        断开数据库
+    3. 封装了通用的query 方法 sql data
+    4. 提供各种业务 sql 封装函数
+        - 检测users表是否有某用户 select count(*)
+        - 插入一条用户记录    insert into 
+- 登录功能的细节
+    GET / signin  表单
+    验证表单
+    ajax 提交表单  POST / signin  { }
+    bodyparser post 表单
+    后台登录路由
+    后台登录控制器
+    后端验证参数
+    sql 查询操作
+    种cookie  session
+    
+    http 带上cookie session 解析出相应的对象
+    
 
 
