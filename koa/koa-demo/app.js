@@ -9,6 +9,35 @@ const bodyParser = require('koa-bodyparser')
 const signupRouter = require('./routers/signup.js')
 const postsRouter = require('./routers/posts.js')
 const signinRouter = require('./routers/signin.js')
+const signoutRouter = require('./routers/signout')
+const session = require('koa-session-minimal')
+
+// const sessionMysqlConfig = {
+//     host: config.database.HOST,
+//     user: config.database.USERNAME,
+//     password: config.database.PASSWORD,
+//     database: config.database.DATABASE
+// }
+
+app.keys = ['some secret hurr'];
+const sessionConfig = {
+    key: 'USER_SID',
+    maxAge: 864000000,
+    autoCommit: true,
+    overwrite: true,
+    httpOnly: true,
+    signed: true,
+    secure: false,
+    sameSite:null
+}
+
+app.use(session(sessionConfig, app))
+
+
+// app.use(session({
+//     key: 'USER_SID'
+//     // store: new MysqlStore(sessionMysqlConfig)
+// }))
 
 app.use(staticCache(path.join(__dirname, './public'), {dynamic: true,}, {
     maxAge: 15 * 24 * 60 * 60
@@ -25,6 +54,7 @@ app.use(bodyParser({
 app.use(signupRouter.routes())
 app.use(signinRouter.routes())
 app.use(postsRouter.routes())
+app.use(signoutRouter.routes())
 
 // views 在哪里
 

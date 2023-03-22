@@ -8,7 +8,8 @@ exports.getSignup = async ctx => {
     // ctx.response.body = '注册'
 
     let data = {
-        title: '注册'
+        title: '注册',
+        session: ctx.session
     }
     await ctx.render('signup', data)
 }

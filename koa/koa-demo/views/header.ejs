@@ -3,24 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Document</title>
-    <meta name="description" content="全球中文vue论坛">
-    <meta name="keywords" content="vue,koa">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> -->
+    <title>koa2-blog</title>
+    <meta name="description" content="全球中文vue论坛..."/>
+    <meta name="keywords" content="koa,vue"/>
     <link rel="stylesheet" href="/index.css">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
     <header>
         <div class="user_name">
+            <% if (session.user) {%>
+            hello, <%= session.user%>
+            <a href="/signout">退出</a>
+            <% }%>
+            <% if (!session.user) {%>
             欢迎注册登录
+            <% }%>
         </div>
         <div class="user_right">
             <div class="none_user has_user">
                 <a href="/posts">全部文章</a>
+                <% if (session.user) {%>
+                <a href="/posts?author=<%= session.user %>">我的文章</a>
+                <a href="/create">发表文章</a>
+                <% }%>
+                <% if (!session.user) {%>
                 <a href="/signup">注册</a>
                 <a href="/signin">登录</a>
+                <% }%>
             </div>
+
         </div>
     </header>
-    <!-- 公共的App.vue Nav -->
+    <!-- 公共的App.vue Nav  -->

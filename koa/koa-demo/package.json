@@ -12,6 +12,9 @@
   "dependencies": {
     "ejs": "^3.1.9",
     "koa-bodyparser": "^4.4.0",
+    "koa-mysql-session": "^0.0.2",
+    "koa-session": "^6.4.0",
+    "koa-session-minimal": "^4.0.3",
     "koa-static-cache": "^5.1.4",
     "koa-views": "^8.0.0",
     "md5": "^2.3.0",
