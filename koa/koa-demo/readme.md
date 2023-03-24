@@ -203,3 +203,29 @@
     2. cookie 性能不好
     3. token 小， 生成 json 对象  session要那么多空间了
 
+- 关系型数据库
+    MYSQL  SQLServer 表关联
+    Users 1   n Posts
+    Posts 1   n Comments
+    Key  Primary key   Uniq Key  Foreign  Key
+    Key  组合  查询业务的频繁度
+    假如字典有1500 页面（硬盘） 如果没有索引 从第一页找到最后一页
+    有了索引之后，索引表会在内存之中 先查5页 索引 第几页
+- NOSQL
+- 数据冗余
+name 有利于列表页单表查询  适当的冗余
+
+- 中间件登录检测方案
+    1. 在后端项目架构中 middlewares 是自定义中间件的所在
+    2. 登录校验也可以和session，bodyParser... 可以视为一个独立的中间件，
+        在路由发生时， 在controller 前面
+    '/path'，checkLogin, controller
+    中间件的本质是数组，有顺序，可以放一堆
+    3. 有利于复用
+
+- 内容安全
+    1. 不要相信用户的输入
+    2. 用户有可能输入js代码 甚至是sql语句
+    cookie 盗用
+    3. <script> 删除  转义
+
