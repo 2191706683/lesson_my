@@ -3,7 +3,7 @@ const config = require('./config/default.js')
 const app = new koa()
 const path = require('path')
 const views = require('koa-views')
-const staticCache = require('koa-static-cache');
+const staticCache = require('koa-static-cache')
 const bodyParser = require('koa-bodyparser')
 
 const signupRouter = require('./routers/signup.js')

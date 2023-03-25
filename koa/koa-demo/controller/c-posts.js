@@ -30,7 +30,7 @@ exports.getPosts = async (ctx, next) => {
     } else {
         // 第一页的文章
         const postData = await userModel.findPostByPage(1)
-        const postCountData = await userModel.finAllPostCount()
+        const postCountData = await userModel.findAllPostCount()
         await ctx.render('posts', {
             session: ctx.session,
             posts: postData,

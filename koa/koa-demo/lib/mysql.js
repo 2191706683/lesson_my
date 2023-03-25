@@ -78,7 +78,7 @@ exports.findPostByUserPage = (name, page) => {
     return query(_sql)
 }
 
-exports.finAllPostCount = () => {
+exports.findAllPostCount = () => {
     let _sql = `select count(*) as count from posts;`
     return query(_sql)
 }
