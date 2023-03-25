@@ -6,7 +6,6 @@ const moment = require('moment') // 时间
 exports.getSignup = async ctx => {
     // 显示注册页 view 
     // ctx.response.body = '注册'
-
     let data = {
         title: '注册',
         session: ctx.session

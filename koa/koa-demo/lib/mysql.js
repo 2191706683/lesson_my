@@ -64,8 +64,28 @@ exports.insertPost = (value) => {
 }
 
 exports.findCommentsCountById = (id) => {
-let _sql = `select count(*) as count from comments where postid="${id}";`
-return query(_sql)
+    let _sql = `select count(*) as count from comments where postid="${id}";`
+    return query(_sql)
+}
+
+exports.findPostCountByName = (name) => {
+    let _sql = `select count(*) as count from posts where name="${name}";`
+    return query(_sql)
+}
+
+exports.findPostByUserPage = (name, page) => {
+    let _sql = `select * from posts where name="${name}" order by id desc limit ${(page-1)*10}, 1;`
+    return query(_sql)
+}
+
+exports.finAllPostCount = () => {
+    let _sql = `select count(*) as count from posts;`
+    return query(_sql)
+}
+
+exports.findPostByPage = (page) => {
+    let _sql = `select * from posts limit ${(page-1)*10},1;`
+    return query(_sql)
 }
 
 let users = 

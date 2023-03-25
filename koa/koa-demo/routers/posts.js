@@ -3,7 +3,11 @@ const routers = require('koa-router')()
 const controller = require('../controller/c-posts.js')
 const checkLogin = require('../middlewares/check.js').checkLogin
 
+routers.get('/', controller.getRedirectPosts)
 // restful-api?
+// 文章页
+
+// 单纯渲染posts页面并传session
 routers.get('/posts', controller.getPosts)
 // 单篇文章详情页
 routers.get('/posts/:postId', controller.getSinglePosts)

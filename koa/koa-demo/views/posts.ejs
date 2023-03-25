@@ -1,3 +1,34 @@
-<%- include("header", {type: 'all' }) %>
-
-<%- include("footer") %>
+<%- include("header",{type:''}) %>
+    <div class="container">
+        <% if(posts.length> 0 ){ %>
+            <ul class="posts">
+                <% posts.forEach(function(res){ %>
+                    <li>
+                        <div class="author">
+                            <span title="<%= res.name %>"><a href="/posts?author=<%= res.name %> ">author: <%= res.name
+                                        %></a></span>
+                            <span>评论数：<%= res.comments %></span>
+                            <span>浏览量：<%= res.pv %></span>
+                        </div>
+                        <div class="comment_pv">
+                            <span>
+                                <%= res.moment %>
+                            </span>
+                        </div>
+                        <a href="/posts/<%= res.id %>">
+                            <div class="title">
+                                <img class="userAvator" src="images/<%= res.avatar %>" alt="avator">
+                                <%- res.title %>
+                            </div>
+                            <div class="content markdown">
+                                <%- res.content %>
+                            </div>
+                        </a>
+                    </li>
+                    <% }) %>
+            </ul>
+            <% }else{ %>
+                <p class="tips">暂时没有文章，快去前往发表吧</p>
+                <% } %>
+    </div>
+    <%- include("footer")%>

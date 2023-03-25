@@ -1,0 +1,33 @@
+<%- include("header", {type: 'my' }) %>
+<div class="container">
+    <ul class="posts">
+        <% posts.forEach(function(res) { %>
+            <li>
+                <div class="author">
+                    <span title="<%= res.name %>">
+                        author: <a href="/posts?author=<%= res.name %>"><%= res.name %></a>
+                    </span>
+                    <span>
+                        <!-- 评论数：<%= res.comments %> -->
+                    </span>
+                    <span>
+                        浏览量<%= res.pv %>
+                    </span>
+                </div>
+                <div class="comment_pv">
+                    <span><%= res.moment %></span>
+                </div>
+                <a href="/posts/<%= res.id %>">
+                    <div class="title">
+                        <img src="/images/<%= res.avatar %>" alt="" class="userAvatar">
+                        <%- res.title %>
+                    </div>
+                    <div class="content markdown">
+                        <%- res.content %>
+                    </div>
+                </a>
+            </li>
+        <% })%>
+    </ul>
+</div>
+<%- include("footer") %>
