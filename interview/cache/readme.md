@@ -29,7 +29,17 @@
         - 再次请求 /tow.png 前端缓存就挡道  有没有缓存
             本地时钟和缓存的 Expires 时间比较  如果还没到时间，强制走缓存或则走后端
         - 本地时钟不准确 Expires 不准确
-    <!-- 2. 浏览器的文件系统 -->
-    2. HTTP 1.1 更新 Cache-Control  相对时间
+    2. 浏览器的文件系统
+    3. HTTP 1.1 更新 Cache-Control  相对时间
         maxAge  倒计时 
 
+- 强缓存
+    expires  http 1.0
+    cache-control max-age
+
+- 缓存过期了怎么办 一定要重新请求吗?
+    强缓存过期 但是服务器端文件 变了或者没变
+
+- 协商缓存
+    Last-Modified + If-Modified-Since
+    Etag +   If-None-Match 

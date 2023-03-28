@@ -4,7 +4,7 @@
   "description": "- 静态资源缓存\r     304 Not Modified",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon etag.js"
   },
   "keywords": [],
   "author": "",
