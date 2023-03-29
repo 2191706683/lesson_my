@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+<body>
+    <script>
+        // 为什么js会有异步 因为js 里面有event loop 
+        // callback完了之后 回调地狱
+        // 代码可读性不好 代码的编写顺序和执行顺序不一致，容易误解
+        // es5 只能使用回调函数解决异步问题
+        // es6 Promise  thenable -> generator ->async await（为了努力让 js 成为大型语言 对其它语言开发者友好)
+        // 同步等待几秒 sleep
+        const time = (timer) => {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve()
+                }, timer)
+            })
+        }
+        const ajax1 = () => time(2000).then(() => {
+            console.log(1)
+            return 1
+        })
+        const ajax2 = () => time(1000).then(() => {
+            console.log(2)
+            return 2
+        })
+        const ajax3 = () => time(1000).then(() => {
+            console.log(3)
+            return 3
+        })
+
+        function mergePromise(ajaxArray) {
+            const data = []
+            let promise = Promise.resolve() // static  空的 thenable
+            // ...
+            ajaxArray.forEach(ajax => {
+                promise = promise.then(ajax).then(res => {
+                    data.push(res)
+                    return data
+                })
+            })
+            return promise
+        }
+
+        mergePromise([ajax1, ajax2, ajax3]).then(data => {
+            console.log('demo')
+            console.log(data) // 按顺序收集数组的结果 [1,2,3]
+        })
+    </script>
+</body>
+</html>
