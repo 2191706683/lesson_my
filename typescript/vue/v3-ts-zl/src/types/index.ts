@@ -14,7 +14,14 @@ export interface UserProps {
     avatar?: ImageProps
 }
 
+export interface GlobalErrorProps {
+    status: boolean
+    message?: string
+}
+
 export interface GlobalDataProps {
     token: string
     user:  UserProps
+    loading: boolean
+    error: GlobalErrorProps
 }

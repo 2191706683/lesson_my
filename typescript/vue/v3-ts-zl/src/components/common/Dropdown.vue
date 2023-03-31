@@ -15,8 +15,8 @@
 
 <script lang="ts">
 // setup 类似组件里的方法，composition-api
-import { defineComponent } from 'vue';
-import { ref } from 'vue';
+import { ref, defineComponent, watch } from 'vue';
+import useClickOutside from '../../hooks/useClickOutside'
 export default defineComponent({
     name: 'Dropdown',
     props: {
@@ -31,7 +31,15 @@ export default defineComponent({
         const toggleOpen = () => {
             isOpen.value = !isOpen.value
         }
-        const dropdownRef = ref<HTMLElement | null>(null)
+        const dropdownRef = ref<HTMLElement | null>(null) // 联合类型
+        // hooks 函数的ref / reactive 和 组件内的响应式 一样的地位
+        const { isClickOutside } = useClickOutside(dropdownRef) // 点了外面
+        watch(isClickOutside, () => {
+            if (isOpen.value && isClickOutside.value) {
+                isOpen.value = false
+            }
+        }) 
+        
         return {
             isOpen,
             toggleOpen,
