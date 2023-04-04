@@ -14,6 +14,7 @@ const asyncAndCommit = async (url: string, mutationName: string, commit: Commit,
     } else {
         commit(mutationName, { data })
     }
+    return data
 }
 
 const store = createStore<GlobalDataProps>({
@@ -38,7 +39,7 @@ const store = createStore<GlobalDataProps>({
             // console.log(list, count, currentPage)
             state.columns = {
                 total: count,
-                currentPage: currentPage + 1,
+                currentPage: currentPage,
                 data: {
                     ...data,
                     ...arrToObj(list)
