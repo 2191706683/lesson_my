@@ -1,6 +1,7 @@
-import axios, { AxiosRequestConfig } from 'axios'
+import axios , { AxiosRequestConfig } from 'axios'
 
 export {
     axios
 }
+
 export type { AxiosRequestConfig }
