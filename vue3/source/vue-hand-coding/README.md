@@ -1,7 +1,9 @@
-# Vue 3 + Vite
+# vue源码
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+- 测试驱动开发
+    什么是好的代码？可以通过所有的测试代码，测试本身也是代码
+    在大厂，有专门的test阶段，有test工程师
+    工程师要自己会写一些测试用例，jest 测试框架
+    测试驱动开发的思想 TDD
 
-## Recommended IDE Setup
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
