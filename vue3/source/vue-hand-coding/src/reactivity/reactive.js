@@ -5,6 +5,11 @@
 // const ret = reactive({num: 0, num1: 2, num2: {a: 2}}) // 深代理
 import { mutableHandlers } from './baseHandlers'
 export const reactiveMap = new WeakMap()
+
+export const ReactiveFlags = {
+    RAW: "__v_raw", // 原生对象
+    IS_REACTIVE: "__V_isReactive" // obj.num.a 响应式
+}
 // 响应式 
 export function reactive(target) {
     // return new Proxy(target, {})
@@ -20,7 +25,7 @@ function createReactiveObject(target, proxyMap, proxyHandlers) {
 
     const existingProxy = proxyMap.get(target)
     if (existingProxy) {
-        console.log('-----cached',target)
+        console.log('-----cached', target)
         return existingProxy
     }
 
