@@ -3,18 +3,29 @@
 // 为了依赖函数的查找， 更新的时候，找依赖 vuex 单一状态数 targetMap 依赖图谱
 // 时间复杂度为O(1)
 // const ret = reactive({num: 0, num1: 2, num2: {a: 2}}) // 深代理
-import { mutableHandlers } from './baseHandlers'
+import { mutableHandlers, shallowReactiveHandlers } from './baseHandlers'
 export const reactiveMap = new WeakMap()
+export const shallowReactiveMap = new WeakMap()
 
-export const ReactiveFlags = {
-    RAW: "__v_raw", // 原生对象
-    IS_REACTIVE: "__V_isReactive" // obj.num.a 响应式
-}
+// export const ReactiveFlags = {
+//     RAW: "__v_raw", // 原生对象
+//     IS_REACTIVE: "__V_isReactive" // obj.num.a 响应式
+// }
+
 // 响应式 
 export function reactive(target) {
     // return new Proxy(target, {})
     // 修改后，如何处理
     return createReactiveObject(target, reactiveMap, mutableHandlers)
+}
+
+// 让用户自己决定浅层的代理 
+export function shallowReactive(target) {
+    return createReactiveObject(
+        target,
+        shallowReactiveMap, // 为了作区分， 浅层响应式单独存放
+        shallowReactiveHandlers // 
+    )
 }
 
 function createReactiveObject(target, proxyMap, proxyHandlers) {
@@ -33,8 +44,4 @@ function createReactiveObject(target, proxyMap, proxyHandlers) {
     const proxy = new Proxy(target, proxyHandlers)
     proxyMap.set(target, proxy) // 缓存
     return proxy
-}
-
-export function shallowReactive() {
-    
 }

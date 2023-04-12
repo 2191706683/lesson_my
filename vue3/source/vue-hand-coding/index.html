@@ -9,5 +9,16 @@
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
+    <script>
+      var obj = {
+        y: 1,
+        get x() {
+          return this
+        }
+      }
+      var receiver = {}
+      console.log(Reflect.get(obj, 'x') === obj)
+     console.log( Reflect.get(obj, 'x', receiver) === receiver)
+    </script>
   </body>
 </html>

@@ -1,7 +1,7 @@
 // const { reactive, effect } = require("@vue/reactivity") 
 // const { reactive } = require('../reactive')
 // const { effect } = require('../effect')
-import { reactive } from '../reactive'
+import { reactive, shallowReactive } from '../reactive'
 import { effect } from '../effect'
 // describe是由jest 提供的API
 // vue是一个达成了99.99% 用例测试的框架
@@ -37,5 +37,45 @@ describe('虚拟DOM', () => {
         ret.num++
         expect(val).toBe(1)
         expect(val2).toBe(1)
+    })
+    test('shallowReactive基本使用', () => {
+        const ret = shallowReactive({num: 0})
+        let val
+        effect(() => {
+            val = ret.num
+        })
+        expect(val).toBe(0)
+        ret.num++
+        expect(val).toBe(1)
+    })
+    test('shallowReactive浅层响应式', () => {
+        const ret = shallowReactive({
+            info: {
+                price: 129,
+                type: 'f2e'
+            }
+        })
+        let price
+        effect(() => {
+            price = ret.info.price
+        })
+        expect(price).toBe(129)
+        ret.info.price++
+        expect(price).toBe(129)
+    })
+    it('reactive 嵌套', () => {
+        const ret = reactive({
+            info: {
+                price: 129,
+                type: 'f2e'
+            }
+        })
+        let price
+        effect(() => {
+            price = ret.info.price
+        })
+        expect(price).toBe(129)
+        ret.info.price++
+        expect(price).toBe(130)
     })
 })
