@@ -29,5 +29,86 @@
     - 性能优化
         查找 比对 在内存之中高效的收集差异
 
+- 函数式组件(Functional component) 和 有状态组件(Stateful component)
+    - 有状态组件 父组件
+    class Mycomponent {}
+        是一个类，可实例化
+        可以有自身状态
+        产出VNode 的方式：render 方法
+    - 函数式组件 展示为主 stateLessComponent props
+    function MyComponent(props) {props.title='fdfdd'}
+        - 是一个纯函数，一个props状态对应唯一的template
+        - 没有自身的状态
+        - 产出VNode 的方式  单纯的函数调用
 
-        
+- 组件是怎么挂载到页面上的 Vnode + Renderer
+- 当更新时， 组件是如何effect
+- DOM VDOM
+    - document.createElement('div')  <div>
+    - h('div')
+    - Component.$VNode -> h('div')
+    - tag, props({class:"sd";id: "d1"}), children: [
+        { tag: ele, {list: list}, children: []}
+        { tag: div, {}, children: ['hello world']}
+    ]
+        <div class="sd">
+            <ele :list="id1"></ele>
+            <div>hello world</div>
+        </div>
+
+        class TreeNode {
+            constructor(value) {
+                this.left = null
+                this.right = null
+                this.value = value
+            }
+        }
+    VDOM
+    h(tag, data, children) VNode
+        h(tag, data, children) VNode
+            null
+
+- 我们可以通过检查 tag 属性值是否是字符串来确定一个 VNode 是否是普通标签
+    - tag function -> stateLessComponent  h(template)
+    - class -> StatefulComponent   h(component.render)
+    - .text -> document.createTextNode()
+    - Fragment  document.createDocumentFragment 性能优化组件
+        <template>
+            <Fragment>
+              <td></td>
+              <td></td>
+              <td></td>
+            </Fragment>
+        </template>
+
+    - Portal   指定目标地  弹出层
+        <Dialog>
+            <p>
+                <Portal target="body">
+            </p>
+        </Dialog>
+        flags
+
+        const elementVNode = {
+          tag: 'div',
+          flags: 0|1|2|3|4,
+          data: null,
+          children: {
+            tag: MyComponent,
+            data: null
+          }
+        }
+
+- flags 设计
+    - 优化手段
+        不需要每次都判断
+    - html 元素还是组件亦或是普通文本 常用的
+        - 拿到 VNode 后先尝试把它当作组件去处理，如果成功地创建了组件，那说明该 VNode 就是组件的 VNode
+        - 如果没能成功地创建组件，则检查 vnode.tag 是否有定义，如果有定义则当作普通标签处理
+        普通标签处理 includes  html标签校验  HTMLElement
+        - 如果 vnode.tag 没有定义则检查是否是注释节点
+        - 如果不是注释节点，则会把它当作文本节点对待
+    - 使用位运算在一定程度上再次拉升了运行时性能
+        flags  2 4 8 16 32 64。。。。
+- vue runtime
+- template -> h 写出 -> VNode -> Renderer
