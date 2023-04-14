@@ -1,4 +1,4 @@
-import { VNodeFlags, ChildrenFlags } from './flag'
+import { VNodeFlags, ChildrenFlags } from './flags'
 export const Fragment = Symbol() // key  唯一的
 export const Portal = Symbol() // 
 
@@ -10,9 +10,12 @@ export function h(tag, data=null, children=null) {
         flags = VNodeFlags.FRAGMENT
     } else if (tag === Portal) {
         flags = VNodeFlags.PORTAL
+        tag = data && data.target
     } else {
         if (tag !== null && typeof tag === 'object') {
-
+            flags = tag.functional
+                ? VNodeFlags.COMPONENT_FUNCTIONAL
+                :VNodeFlags.COMPONENT_STATEFUL_NORMAL
         } else if (typeof tag === 'function') {
             flags = tag.prototype && tag.prototype.render
                 ? VNodeFlags.COMPONENT_STATEFUL_NORMAL
@@ -23,9 +26,10 @@ export function h(tag, data=null, children=null) {
     if (Array.isArray(children)) {
         const { length } = children
         if (length == 0) {
-
+            childFlags = ChildrenFlags.NO_CHILDREN
         } else if (length == 1) {
-
+            childFlags = ChildrenFlags.SINGLE_VNODE
+            children = children[0]
         } else {
             // 2个以上
             childFlags = ChildrenFlags.KEYED_VNODES // key 后面再做

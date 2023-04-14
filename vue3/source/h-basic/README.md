@@ -17,6 +17,8 @@ let c = a + b
     - 处处性能优化
         - VNodeFlags ChildrenFlags
             位移运算  & 
+            render  到底是走DOM API 还是 Component
+            render 位& VNode  flags & VNodeFlags.ELEMENT
         - element  VNode 和 真实DOM 的映射
     - 代码的模块化
         - flag 单独放
@@ -25,4 +27,8 @@ let c = a + b
         - renderer
     - 测试驱动开发
         以实现一个小目标慢慢推进大目标
-
+    - 面向对象的设计
+        - Component 组件设计
+            - 继承
+                render 必须有 vue2.0
+                基类 throw  super

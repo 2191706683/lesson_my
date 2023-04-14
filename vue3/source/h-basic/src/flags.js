@@ -2,23 +2,23 @@ const VNodeFlags = {
     // html 标签
     ELEMENT_HTML: 1,
     // SVG 标签
-    ELEMENT_SVG: 1 << 1,
+    ELEMENT_SVG: 1 << 1, // 2
 
     // 普通有状态组件
-    COMPONENT_STATEFUL_NORMAL: 1 << 2,
+    COMPONENT_STATEFUL_NORMAL: 1 << 2, // 4
     // 需要被keepAlive的有状态组件
-    COMPONENT_STATEFUL_SHOULD_KEEP_ALIVE: 1 << 3,
+    COMPONENT_STATEFUL_SHOULD_KEEP_ALIVE: 1 << 3, //8
     // 已经被keepAlive的有状态组件
-    COMPONENT_STATEFUL_KEPT_ALIVE: 1 << 4,
+    COMPONENT_STATEFUL_KEPT_ALIVE: 1 << 4,  // 16
     // 函数式组件
-    COMPONENT_FUNCTIONAL: 1 << 5,
+    COMPONENT_FUNCTIONAL: 1 << 5, // 32
 
     // 纯文本
-    TEXT: 1 << 6,
+    TEXT: 1 << 6, // 64
     // Fragment
-    FRAGMENT: 1 << 7,
+    FRAGMENT: 1 << 7, //128
     // Portal
-    PORTAL: 1 << 8
+    PORTAL: 1 << 8 // 256
 }
 // html 和 svg 都是标签元素，可以用 ELEMENT 表示
 VNodeFlags.ELEMENT = VNodeFlags.ELEMENT_HTML | VNodeFlags.ELEMENT_SVG
@@ -37,12 +37,12 @@ const ChildrenFlags = {
     // 没有 children
     NO_CHILDREN: 1,
     // children 是单个 VNode
-    SINGLE_VNODE: 1 << 1,
+    SINGLE_VNODE: 1 << 1, // 2
 
     // children 是多个拥有 key 的 VNode  v-for li
-    KEYED_VNODES: 1 << 2,
+    KEYED_VNODES: 1 << 2, // 4
     // children 是多个没有 key 的 VNode  p div
-    NONE_KEYED_VNODES: 1 << 3
+    NONE_KEYED_VNODES: 1 << 3 // 8
 }
 
 ChildrenFlags.MULTIPLE_VNODES = 
