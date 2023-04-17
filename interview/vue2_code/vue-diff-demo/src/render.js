@@ -1,4 +1,5 @@
 import { VNodeFlags, ChildrenFlags } from './flags'
+import { patchData } from './patchData'
 
 export default function render(vnode, container) {
     const prevVNode = container.vnode
@@ -54,16 +55,19 @@ function mountElement(vnode, container, isSVG) {
     const data = vnode.data
     if (data) {
         for (let key in data) {
-            switch (key) {
-                case 'style':
-                    for (let k in data.style) {
-                        el.style[k] = data.style[k]
-                    }
-                    break
-                default:
-                    break
-            }
+            patchData(el, key, null, data[key])
         }
+        // for (let key in data) {
+        //     switch (key) {
+        //         case 'style':
+        //             for (let k in data.style) {
+        //                 el.style[k] = data.style[k]
+        //             }
+        //             break
+        //         default:
+        //             break
+        //     }
+        // }
     }
     const childFlags = vnode.childFlags
     const children = vnode.children
@@ -171,6 +175,22 @@ function patchElement(prevVNode, nextVNode, container) { // tag -> p  replace
             patchData(el, key, prevValue, nextValue)
         }
     }
+
+    if (prevData) {
+        for (let key in prevData) {
+            const prevValue = prevData[key]
+            if (prevValue && !nextData.hasOwnProperty(key)) {
+                patchData(el, key, prevValue, null)
+            }
+        }
+    }
+    patchChildren(
+        prevVNode.childFlags,
+        nextVNode.childFlags,
+        prevVNode.children,
+        nextVNode.children,
+        el
+    )
     // if (nextData) {
     //     for (let key in nextData) {
     //         const prevValue = prevData[key]
@@ -191,5 +211,63 @@ function patchElement(prevVNode, nextVNode, container) { // tag -> p  replace
     //     }
     // } else {
     // }
+}
 
+function patchChildren(
+    prevChildFlags,
+    nextChildFlags,
+    prevChildren,
+    nextChildren,
+    container
+) {
+    switch (prevChildFlags) {
+        // 旧的 children 是单个子节点，会执行该 case 语句块
+        case ChildrenFlags.SINGLE_VNODE:
+            switch (nextChildFlags) {
+                case ChildrenFlags.SINGLE_VNODE:
+                    // 新的 children 也是单个子节点时，会执行该 case 语句块
+                    patch(prevChildren, nextChildren, container)
+                    break
+                case ChildrenFlags.NO_CHILDREN:
+                    // 新的 children 中没有子节点时，会执行该 case 语句块
+                    container.removeChild(prevChildren.el)
+                    break
+                default:
+                    // 但新的 children 中有多个子节点时，会执行该 case 语句块
+                    container.removeChild(prevChildren.el)
+                    for (let i = 0; i < nextChildren.length; i++) {
+                        mount(nextChildren[i], container)
+                    }
+                    break
+            }
+            break
+        // 旧的 children 中没有子节点时，会执行该 case 语句块
+        case ChildrenFlags.NO_CHILDREN:
+            switch (nextChildFlags) {
+                case ChildrenFlags.SINGLE_VNODE:
+                    // 新的 children 也是单个子节点时，会执行该 case 语句块
+                    break
+                case ChildrenFlags.NO_CHILDREN:
+                    // 新的 children 中没有子节点时，会执行该 case 语句块
+                    break
+                default:
+                    // 但新的 children 中有多个子节点时，会执行该 case 语句块
+                    break
+            }
+            break
+        // 旧的 children 中有多个子节点时，会执行该 case 语句块
+        default:
+            switch (nextChildFlags) {
+                case ChildrenFlags.SINGLE_VNODE:
+                    // 新的 children 也是单个子节点时，会执行该 case 语句块
+                    break
+                case ChildrenFlags.NO_CHILDREN:
+                    // 新的 children 中没有子节点时，会执行该 case 语句块
+                    break
+                default:
+                    // 但新的 children 中有多个子节点时，会执行该 case 语句块
+                    break
+            }
+            break
+    }
 }

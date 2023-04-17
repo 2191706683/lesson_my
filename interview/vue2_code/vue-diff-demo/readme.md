@@ -10,6 +10,10 @@
         - render.js
             - patchData.js
             - diff.js
+    - 抽象能力
+    - 逻辑能力
+        严谨且完整
+
 
 - 虚拟DOM算法操作真实DOM，性能高于直接操作真实DOM
     虚拟DOM算法 = 虚拟DOM + Diff算法
