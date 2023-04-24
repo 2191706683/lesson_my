@@ -1,0 +1,15 @@
+{
+  "name": "node_data_demo",
+  "version": "1.0.0",
+  "description": "- prompt  工程师\r     角色 任务\r     - 编程token\r         - 写一个 XX 程序\r         - title的属性的值后加上字符串'-->'\r         - 替换成\r         - 生成一个名为xx的文件\r         - 写入data 目录\r         - script setup  composition api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "openai": "^3.2.1"
+  }
+}
