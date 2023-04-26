@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/three.js/r83/three.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container" style="width: 100%;height: 100%;"></div>
+    <script>
+        var scene, camera, renderer;
+
+        function init() {
+            scene = new THREE.Scene();
+            //这里参数不懂的同学回去看基本知识里的camera部分
+            camera = new THREE.PerspectiveCamera(90, document.body.clientWidth / document.body.clientHeight, 0.1, 100);
+            //camera的位置在x0,y0,z3，还记得迪尔卡右手坐标系吗？
+            camera.position.set(0, 0, 3);
+
+            renderer = new THREE.WebGLRenderer();
+            renderer.setSize(document.body.clientWidth, document.body.clientHeight);
+            document.getElementById("container").appendChild(renderer.domElement);
+
+            // var controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+            //等待添加模型
+            const geometry = new THREE.BoxGeometry(1, 1, 1);
+            const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+            const cube = new THREE.Mesh(geometry, material);
+            scene.add(cube);
+
+            loop();
+        }
+
+        function loop() {
+            requestAnimationFrame(loop);
+            renderer.render(scene, camera);
+        }
+
+        window.onload = init;
+    </script>
+</body>
+
+</html>
