@@ -11,7 +11,7 @@ dotenv.config()  // 根目录下 .env 执行 process.env 对象中
  * process.env 环境变量
  * 安装 @types/node ？js 前端静态编译 不支持process
  */
-console.log(process.env, '//////')
+// console.log(process.env, '//////')
 export const { APP_PORT } = process.env
 
 /**

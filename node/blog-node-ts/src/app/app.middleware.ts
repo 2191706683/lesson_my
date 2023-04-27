@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction, response } from "express"
+import { Request, Response, NextFunction } from "express"
 
 /**
  * 
@@ -58,4 +58,6 @@ export const defaultErrorHandler = (
             break;
     }
     response.status(statusCode).send({message})
+
+    next()
 }   
