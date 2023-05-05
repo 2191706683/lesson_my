@@ -7,7 +7,8 @@ import { UserModel } from './user.model';
 export const getUser = (condition: string) => {
     // user.name  user.id user.name
     // sql模板 ？ WHERE 分支
-    return async (param: string) => {
+    return async (param: string | number) => {
+
         const statement = `
             SELECT
                 user.id,
@@ -18,7 +19,7 @@ export const getUser = (condition: string) => {
                 ${condition} = ?
         `;
         const [data] = await connection.promise().query(statement, param);
-        return data[0]?.id ? data[0].id : null;
+        return data[0]?.id ? data[0] : null;
     }
 }
 
@@ -40,3 +41,5 @@ export const createUser = async (user: UserModel) => {
  * 按用户名获取
  */
 export const getUserByName = getUser('user.name')
+
+export const getUserById = getUser('user.id')

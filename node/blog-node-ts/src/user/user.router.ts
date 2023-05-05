@@ -11,6 +11,7 @@ import {
  * users post 新增
  */
 router.post('/users', validateUserData, hashPassword , userController.store);
+router.get('/users/:userId', userController.show)
 
 /**
  * 导出路由

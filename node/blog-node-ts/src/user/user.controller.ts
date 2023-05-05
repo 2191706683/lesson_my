@@ -17,3 +17,21 @@ export const store = async (
         next(error)
     }
 }
+
+export const show = async (
+    request: Request,
+    response: Response,
+    next: NextFunction
+) => {
+    const { userId } = request.params;
+    try {
+        const user = await userService.getUserById(parseInt(userId,10));
+        // // 经验
+        if (!user) {
+            return next(new Error('USER_NOT_FOUND'));
+        }
+        response.status(200).send(user)
+    } catch (error) {
+        next(error)
+    }
+}

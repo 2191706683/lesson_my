@@ -52,6 +52,10 @@ export const defaultErrorHandler = (
             statusCode = 404;
             message = '文件不存在';
             break;
+        case 'USER_NOT_FOUND':
+            statusCode = 404;
+            message = '用户不存在';
+            break;
         default:
             statusCode = 500;
             message = '服务器暂时出了点小问题 ~~ 程序员小哥哥正在抢救';

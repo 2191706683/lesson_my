@@ -49,3 +49,17 @@ https://
         - xxx.service.ts
         - xxx.model.ts
         - xxx.test.ts
+
+- node mysql  koa express
+- 了解基于JEST测试驱动开发TDD
+- HTTP/HTTPS WebSocket
+- 了解 THREE.js Echarts WebGL 2D/3D 数据可视化技术
+
+- TDD 表达
+    1. blog 项目
+    2. 登录鉴权模块
+    3. 测试驱动开发 敏捷开发方式
+    4. 举出一个个的测试用例，并编码通过，
+        全一点，全力通过测试用例
+    5. 严谨专业，自动跑测试的项目 企业级开发的标配，运维思想
+        每次上线前跑一遍所有的测试用例 
