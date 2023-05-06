@@ -21,34 +21,32 @@
         footer {
             text-align: center;
             width: 100%;
-            background-color: #bbbbbb;
+            background-color: #bbb;
         }
 
-        .text {
+        .col {
+            float: left;
             text-align: center;
             line-height: 200px;
             font-size: 40px;
             color: #fff;
         }
 
-        .bd {
+        .container {
             overflow: hidden;
             padding: 0 200px;
         }
 
         .main {
-            float: left;
             width: 100%;
             height: 200px;
             background-color: #ddd;
         }
 
         .left {
-            /* opacity: 0.5; */
-            float: left;
             width: 200px;
             height: 200px;
-            background-color: #da4242;
+            background-color: pink;
             /* 产生布局效果的属性 */
             margin-left: -100%;
             position: relative;
@@ -56,16 +54,13 @@
         }
 
         .right {
-            /* opacity: 0.5; */
-            float: left;
             width: 200px;
             height: 200px;
-            background-color: #4ddef1;
+            background-color: skyblue;
             /* 产生布局效果的属性 */
             margin-left: -200px;
             position: relative;
             left: 200px;
-
         }
 
     /* 
@@ -81,17 +76,17 @@
 
 <body>
     <header>圣杯布局</header>
-    <div class="bd">
-        <div class="main text">
+    <section class="container">
+        <main class="main col">
             main
-        </div>
-        <div class="left text">
+        </main>
+        <aside class="left col">
             left
-        </div>
-        <div class="right text">
+        </aside>
+        <aside class="right col">
             right
-        </div>
-    </div>
+        </aside>
+    </section>
     <footer>footer</footer>
 </body>
 

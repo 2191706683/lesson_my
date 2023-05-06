@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>1.html</h1>
+    <script>
+        window.addEventListener('message', (e) => {
+            console.log(e.data)
+        })
+        const targetWindow = window.open(
+            'http://127.0.0.1:5500/workspace/lesson_my/interview/didi/cors/postMes/2.html'
+        );
+        setTimeout(() => {
+            targetWindow.postMessage('来自1.html的消息', 
+            'http://127.0.0.1:5500');
+        }, 3000)
+    </script>
+</body>
+
+</html>

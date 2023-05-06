@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 棋盘 九宫格 */
+        .grid {
+            display: -webkit-grid;
+            display: grid; /* 布局方式 新 兼容性 */
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 10px;
+            justify-items: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .grid-item {
+            background-color: #3498db;
+            color: #fff;
+            font-size: 3em;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+    </div>
+</body>
+</html>

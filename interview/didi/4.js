@@ -2,18 +2,19 @@
 // private extends
 // 唯一值，没必要，也不会去记忆
 // 私有方法？ 类的方法，共内部使用，隐藏实现的细节
-const _privateMethod = Symbol('privateMethod');
-class MyClass {
-  constructor() {
-    this[_privateMethod] = () => {
-      console.log('This is a private method.');
-    };
+const Person = (function() {
+  const nameSymbol = Symbol('name'); // 定义Symbol作为私有属性的键
+  class Person {
+    constructor(name) {
+      this[nameSymbol] = name; // 使用Symbol作为私有属性的键
+    }
+    getName() {
+      return this[nameSymbol]; // 在类的方法中使用私有属性
+    }
   }
-  publicMethod() {
-    // symbol 私有方法的调用方法
-    this[_privateMethod]();
-  }
-}
-const obj = new MyClass();
-obj.publicMethod(); // 输出 "This is a private method."
-obj[_privateMethod](); // 报错，私有方法无法访问
+  return Person;
+})();
+
+const john = new Person('John');
+console.log(john.getName()); // 'John'
+console.log(john.name); // undefined，无法直接访问私有属性
