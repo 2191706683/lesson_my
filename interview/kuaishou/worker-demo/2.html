@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>web worker</h1>
+  <div>
+    <label>Calculate Fibonacci:</label>
+    <input type="number" min="1" value="40" id="input-number">
+    <button id="start">start worker</button>
+  </div>
+  <div>
+    <h2>result:</h2>
+    <div id="result"></div>
+  </div>
+  <script>
+  const worker = new Worker('worker2.js')
+  const resultDiv = document.getElementById('result');
+  const startBtn = document.getElementById('start');
+
+  startBtn.addEventListener('click', () => {
+    const inputNumber = document.getElementById('input-number').value;
+    worker.postMessage(inputNumber);
+  })
+  worker.addEventListener('message', function(e) {
+    resultDiv.innerHTML = `
+    Fibonacci(${e.data.inputNumber})=${e.data.result}
+    `
+  })
+  </script>
+</body>
+</html>

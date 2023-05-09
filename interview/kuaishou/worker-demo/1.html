@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Web Worker Demo</h1>
+  <button id="start">start Worker</button>
+  <h2>Result:</h2>
+  <div id="result"></div>
+  <script>
+    // claim(100) 耗时 ? 同步代码 单线程 cpu 时间是否超时?
+    // 滚动页面 卡顿?
+    // worker线程 多线程运行
+  const worker = new Worker('worker.js');
+  const resultDiv = document.getElementById('result');
+  const startBtn = document.getElementById('start');
+  startBtn.addEventListener('click', () => {
+    worker.postMessage('hello')
+  })
+  worker.addEventListener('message', function(e) {
+    resultDiv.innerHTML = e.data;
+  })
+  </script>
+</body>
+</html>

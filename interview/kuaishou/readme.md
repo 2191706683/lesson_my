@@ -17,4 +17,11 @@
 - canvas
     小游戏 / three.js WebAr/VR
 
+- finally  有什么用
+   大型语言 try {}  catch() {} finally
+   不需要
+   1. promise 失败后
+   - 应用场景
+
+
 
