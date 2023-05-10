@@ -1,0 +1,20 @@
+{
+  "name": "worker-demo2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/generator": "^7.21.5",
+    "@babel/parser": "^7.21.8",
+    "@babel/traverse": "^7.21.5",
+    "@babel/types": "^7.21.5",
+    "webpack": "^5.82.0",
+    "webpack-cli": "^5.1.1"
+  }
+}
