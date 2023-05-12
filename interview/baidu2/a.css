@@ -1,0 +1,45 @@
+/* 单行文本省略 */
+/* beautiful ssssss*/
+/* white-space  不换行 */
+/* overflow 截断 */
+.single-line-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis; /* 省略号 */
+    white-space: nowrap; 
+}
+
+.multi-line-clamp {
+    /* 新的格式化上下文 弹性布局的早期 */
+    display: -webkit-box;
+    display: box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2; /* 限制行数 */
+}
+
+/* 样式穿透 select + modal z-index */
+/* 选择器
+    - 优先级
+    * + 0 > p 1 > . 10 > #id 100 > 行内 1000 > !important
+    -   标签
+        类名
+        id
+        [属性]
+        关系 + > ~ 空格 后代选择器
+        * 所有 性能
+        伪元素  :before :after
+        伪类    :over :active :link
+        反选择器 :not
+        孩子选择器 :first-child :nth-child(2n)
+
+    .modelA .modelB .section
+    css stylus 预编译 缩进  模块化
+
+- 如何判断一个对象为 Promise 对象
+    
+
+
+
+
+*/
