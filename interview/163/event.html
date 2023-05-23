@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- e.target 和 e.currentTarget 区别？ -->
+    <body onclick="handleClick(event)">
+        <button id="btn1">按钮1</button>
+        <button id="btn2">按钮2</button>
+        <button id="btn3">按钮3</button>
+    </body>
+    <script>
+        // JS 事件底层？
+        // - 先到达浏览器 body
+        // - capture 事件捕获
+        // - event.target
+        // - event.target DOM 节点 终点
+        // - 冒泡
+        // - 到body 退出
+        // 事件委托是JS 优化的一种方案
+        function handleClick(event) {
+            console.log('点击了', event.target.nodeName, ',事件绑定在', event.currentTarget.nodeName)
+        }
+    </script>
+</body>
+</html>
