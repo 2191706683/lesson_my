@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Web App</title>
+
+    <!-- 样式表 -->
+    <link href="/css/main.css" rel="stylesheet" as="style" crossorigin>
+
+    <!-- JS文件 -->
+    <script src="/js/vendors.js" as="script" preload></script>
+    <script src="/js/main.js" as="script" preload></script>
+
+    <!-- 为幻灯片组件预加载所需的图片 -->
+    <link href="/images/gallery/1.jpg" rel="preload" as="image" crossorigin>
+    <link href="/images/gallery/2.jpg" rel="preload" as="image" crossorigin>
+    <link href="/images/gallery/3.jpg" rel="preload" as="image" crossorigin>
+</head>
+
+<body>
+    <!-- header组件 -->
+    <header>
+        <h1>Welcome to My Web App</h1>
+    </header>
+
+    <!-- gallery组件 -->
+    <section id="gallery">
+        <img src="/images/gallery/1.jpg" alt="gallery image 1" />
+        <img src="/images/gallery/2.jpg" alt="gallery image 2" />
+        <img src="/images/gallery/3.jpg" alt="gallery image 3" />
+    </section>
+
+    <!-- footer组件 -->
+    <footer>
+        <p>&copy; My Web App. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
