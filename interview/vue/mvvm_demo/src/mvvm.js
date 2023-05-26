@@ -1,4 +1,5 @@
 import { observe } from './observer'
+import Compile from './compile';
 // 设计模式
 // Vue
 // 组件
@@ -31,3 +32,5 @@ MVVM.prototype = {
         })
     }
 };
+
+export default MVVM

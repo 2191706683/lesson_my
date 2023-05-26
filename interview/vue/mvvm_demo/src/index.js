@@ -8,8 +8,12 @@ var vm = new MVVM({
     },
     methods: {
         clickBtn: function(e) {
-            // this.title 代理 
+            // this.title 代理 defineProperty
             this.title = '你好'
         }
     }
 })
+
+setTimeout(() => {
+    vm.title =  '达瓦里希'
+}, 1000)

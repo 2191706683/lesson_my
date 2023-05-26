@@ -20,4 +20,13 @@
 
     bundle 和 源码的映射关系  source-map
 
+- vue 2.0 响应式
+    1. defineProperty 循环和递归
+    2. 给那个defineProperty descriptor 拦截器 分配一个依赖关系收集器 Dep 实例
+        Dep 维持了订阅发布者关系
+        读操作，写操作 找到对应的 defineProperty descriptor  也就找到了对应的Dep，执行
+        get Dep.target = watcher(node, callback)  addSubs subs
+        set 闭包 中找到响应的dep dep.notify 通知所有的watcher update
+    3. Dep 依赖关系收集器 dependencies
+    4. Watcher 订阅者
 

@@ -54,8 +54,6 @@ Dep.prototype = {
             sub.update();
         }) 
     }
-
-
 }
 
 Dep.target = null; // 指向 get 的对象 templage 计算属性 生命周期 watch
