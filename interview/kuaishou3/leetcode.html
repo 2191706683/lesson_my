@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            height: 100%;
+        }
+        .split-container {
+            display: flex;
+            flex-direction: row;
+            height: 100%;
+            overflow: hidden;
+        }
+        .left-panel,
+        .right-panel {
+            width: 50%;
+        }
+        .drag-handle {
+            width: 10px;
+            height: 100%;
+            cursor: ew-resize;
+            background-color: #F5F5F5;
+            box-shadow: 1px 0px 5px rgba(0, 0, 0 , 0.2);
+        }
+        .drag-handle:hover {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="split-container">
+        <div class="left-panel"></div>
+        <div class="drag-handle"></div>
+        <div class="right-panel"></div>
+    </div>
+    <script>
+        let startX, startWidth;
+        let dragHandle = document.querySelector('.drag-handle');
+        let leftPanel = document.querySelector('.left-panel');
+        let rightPanel = document.querySelector('.right-panel');
+
+        function startDragging(e) {
+            e.preventDefault();
+            startX = e.clientX;
+            startWidth = parseInt(document.defaultView.getComputedStyle(leftPanel).width, 10);
+
+            document.documentElement.addEventListener('mousemove', doDrag, false);
+            document.documentElement.addEventListener('mouseup', stopDragging, false);
+        }
+
+        function doDrag(e) {
+            const diffx = e.clientX - startX;
+            leftPanel.style.width = `${startWidth + diffx}px`
+            rightPanel.style.width = `calc(100% - ${startWidth + diffx})`
+        }
+
+        function stopDragging() {
+            document.documentElement.removeEventListener('mousemove', doDrag);
+            document.documentElement.removeEventListener('mouseup', stopDragging);
+        }
+
+        dragHandle.addEventListener('mousedown', startDragging);
+    </script>
+</body>
+</html>

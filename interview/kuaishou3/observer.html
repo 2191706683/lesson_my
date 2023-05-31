@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <button onclick="addNode()">Add Node</button>
+    <script>
+        const app = document.getElementById('app');
+        function addNode() {
+           const newNode = document.createElement('p');
+           newNode.textContent = 'New node added';
+           app.appendChild(newNode);
+        }
+
+        const observer = new MutationObserver(function(mutationsList) {
+            for (let mutation of mutationsList) {
+                if (mutation.type === 'childList') {
+                    console.log('A child node has been added or removed');
+                }
+            }
+        })
+        observer.observe(app, {
+            childList: true
+        })
+    </script>
+</body>
+</html>
