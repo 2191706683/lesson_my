@@ -1,0 +1,19 @@
+{
+  "name": "yuewen",
+  "version": "1.0.0",
+  "description": "- ssr 怎么理解\r     ssr 服务器端渲染 seo\r     - 响应式，模板 数据 在服务器端编译\r         await service  mysql\r         await vue  compile\r         response -> client html string\r     - client\r         生命周期 事件监听... 在客户端执行",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vue/compiler-ssr": "^3.3.4",
+    "@vue/server-renderer": "^3.3.4",
+    "express": "^4.18.2",
+    "vue": "^3.3.4"
+  }
+}
