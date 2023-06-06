@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var taskNum = 100000;
+        var i = 0;
+        // requestAnimationFrame 宏
+        // html5 worker 大文件 hash 计算 耗时 100+ms
+        requestIdleCallback(unImportWork) // 微
+
+        function unImportWork(deadline) {
+            // 每个时间切片 执行一次， 一直执行
+            // 本次执行时间快到结束了
+            while(deadline.timeRemaining() && taskNum > 0) {
+                i++;
+                console.log(`执行了${i}个任务`);
+                taskNum--;
+            }
+
+            if (taskNum > 0) {
+                requestIdleCallback(unImportWork);
+            }
+        }
+    </script>
+</body>
+</html>

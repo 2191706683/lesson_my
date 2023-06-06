@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="button">button</button>
+    <ul id="container"></ul>
+    <script>
+        // 事件 在移动端 最好不要用click 延迟 300ms 左右，用 ontouchstart 代替
+        document.getElementById('button').addEventListener('click', function() {
+            let now = Date.now();
+            // 十万条数据
+            const total = 100000;
+            let ul = document.getElementById('container');
+            for (let i = 0; i < total; i++) {
+                let li = document.createElement('li');
+                li.innerHTML = Math.random() * total;
+                ul.appendChild(li);
+            }
+
+            console.log('JS运行事件', Date.now() - now);
+            setTimeout(() => {
+                console.log('总运行时间', Date.now() - now);
+            }, 0);
+
+
+        }, false);
+    </script>
+</body>
+</html>
