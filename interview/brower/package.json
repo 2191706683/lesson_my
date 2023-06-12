@@ -1,0 +1,12 @@
+{
+  "name": "brower",
+  "version": "1.0.0",
+  "description": "一个页面上有10个订单，每个订单信息通过/api/order/id获取详细信息，点击一个\"刷新\"按钮重新获取订单信息，并按订单最后更新时间倒序排列。（用原生S,不能用代码生成工具)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

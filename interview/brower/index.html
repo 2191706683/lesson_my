@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #list a {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="javascript:;" id="btn">刷新</a>
+
+        <ul id="list">
+
+        </ul>
+        <div id="detail">
+
+        </div>
+        <script>
+            const list = document.querySelector('#list');
+            const reload = document.querySelector('#btn');
+            const detail = document.querySelector('#detail');
+            function init() {
+                renerList();
+                reload.addEventListener('click', renerList, false);
+                list.addEventListener('click', function (event) {
+                    if (event.target.nodeName === 'A') {
+                        let id = event.target.dataset.id
+                        if (id) {
+                            fetch(`http://localhost:1314/api/order/${id}`)
+                                .then(data => data.json())
+                                .then(data => {
+                                    // console.log(data)
+                                    detail.innerHTML = `
+                                        <div>
+                                            <div>${data[0].title}</div>
+                                            <div>${data[0].price}</div>
+                                            <div>${data[0].des}</div>
+                                        </div>
+                                    `
+                                })
+                        }
+                    }
+                }, false)
+            }
+
+            function renerList() {
+                fetch(`http://localhost:1314/api/order?t=${Math.random() * 10}`)
+                    .then(data => data.json())
+                    .then(data => {
+                        list.innerHTML = data.map(item => `
+                    <li>
+                        <a href="javascript:;" data-id="${item.id}">
+                            ${item.id}
+                            ${item.title}
+                            ${item.price}
+                        </a>
+                    </li>
+                `)
+                    })
+            }
+            window.onload = function () {
+                init();
+            }
+
+        </script>
+    </div>
+</body>
+
+</html>
