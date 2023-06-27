@@ -1,0 +1,12 @@
+/* 将样式模块化拆分，提升复用性 */
+/* tailwind css 模块化，框架级别原子拆分 */
+
+.box {
+  font-size: 16px;
+  border: 1px solid #000;
+  padding: 4px;
+  display: flex;
+}
+.fl {
+  display: flex;
+}
