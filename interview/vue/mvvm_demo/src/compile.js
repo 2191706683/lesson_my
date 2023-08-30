@@ -35,12 +35,12 @@ Compile.prototype = {
             // console.log(node,'sdfds');
             var reg = /\{\{(.*)\}\}/;
             var text = node.textContent; // 文本节点
-            if (self.isElementNode(node)) {
+            if (self.isElementNode(node)) { // 元素节点
                 self.compile(node); // 指令事件
             } else if (self.isTextNode(node) && reg.test(text)) {
                 self.compileText(node, reg.exec(text)[1]);
             }
-
+            
             // 递归
             if (node.childNodes && node.childNodes.length) {
                 self.compileElement(node);
@@ -53,8 +53,8 @@ Compile.prototype = {
         Array.prototype.forEach.call(nodeAttrs, function(attr) {
             var attrName = attr.name;
             if (self.isDirective(attrName)) {
-                var exp = attr.value;
-                var dir = attrName.substring(2); // v-
+                var exp = attr.value; // 属性名
+                var dir = attrName.substring(2); // on:click | model
                 if (self.isEventDirective(dir)) {
                     self.compileEvent(node, self.vm, exp, dir)
                 } else {
@@ -71,18 +71,19 @@ Compile.prototype = {
         return dir.indexOf('on:') === 0;
     },
     compileEvent: function(node, vm, exp, dir) {
-        var eventType = dir.split(':')[1];
+        var eventType = dir.split(':')[1]; // ['on', 'click'] click
         var cb = vm.methods && vm.methods[exp];
         if (eventType && cb) {
             node.addEventListener(eventType, cb.bind(vm), false);
         }
     },
     compileModel: function(node, vm, exp, dir) {
-
+        // var self = this;
+        // node.addEventListener('input', self.compileInput(node, exp), false);
     },
     compileText: function (node, exp) {
         var self = this;
-        var initText = this.vm[exp]; // 数据
+        var initText = this.vm[exp]; // 数据 this.vm.data[exp]
         // console.log(initText);
         this.updateText(node, initText);
         // 将这个节点添加到订阅者中

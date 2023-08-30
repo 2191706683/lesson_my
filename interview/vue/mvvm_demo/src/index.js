@@ -14,6 +14,6 @@ var vm = new MVVM({
     }
 })
 
-setTimeout(() => {
-    vm.title =  '达瓦里希'
-}, 1000)
+// setTimeout(() => {
+//     vm.title =  '达瓦里希'
+// }, 1000)
